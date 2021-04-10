@@ -34,6 +34,15 @@ struct vector3D{
     double z;
 };
 
+typedef struct vector3D vector3D;
+
+struct operationVectores3D{
+    vector3D first;
+    vector3D second;
+};
+
+
+
 
 /*-------Estructuras de datos para las operaciones con matrices----------*/
 typedef struct matriz matrizData;
@@ -67,8 +76,8 @@ program CALCULADORAPROG {
         responseBasic POTENCIA (operationBasic) = 6;
         responseVectores SUMAVECTORES(operationVectores) = 7;
         responseVectores RESTAVECTORES(operationVectores) = 8;
-        responseBasic PRODESCALAR3D(operationVectores) = 9;
-        responseVectores PRODVECTORIAL3D(operationVectores) = 10;
+        responseBasic PRODESCALAR3D(operationVectores3D) = 9;
+        responseVectores PRODVECTORIAL3D(operationVectores3D) = 10;
         responseVectores SUMAMATRICES(operationMatrices) = 11;
     } = 1;
 
