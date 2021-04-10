@@ -64,7 +64,7 @@ calculadoraprog_1(char *host, double a, char operation, double b)
     }
 
 	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, *result);
+	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->response_u.result);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
@@ -79,13 +79,22 @@ calculadoraprog_1(char *host, double a, char operation, double b)
 int
 main (int argc, char *argv[])
 {
+	//Declaracion de variables
 	char *host;
+	double a, b;
+	char operation;
 
-	if (argc < 2) {
+	if (argc  != 5) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
+
+	//Se almacena la peticion
 	host = argv[1];
-	calculadoraprog_1 (host);
+	a = atof(argv[2]);
+	b = atof(argv[4]);
+	operation = *argv[3];
+
+	calculadoraprog_1 (host,a,operation,b);
 exit (0);
 }
