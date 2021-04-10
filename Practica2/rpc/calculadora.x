@@ -11,17 +11,15 @@ union responseBasic switch (int error){
     default:
         void;
 };
-
-
-typedef struct arrayVector vectorData; 
-struct arrayVector{
+ 
+typedef struct arrayVector{
 	int vectorDim;
 	double *vectorValues;
 };
 
 union responseVectores switch (int error){
     case 0:
-       vectorData v;
+       arrayVector v;
     default:
         void;
 };
