@@ -40,13 +40,13 @@ xdr_vectorData (XDR *xdrs, vectorData *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_s_vector (xdrs, objp))
+	 if (!xdr_arrayVector (xdrs, objp))
 		 return FALSE;
 	return TRUE;
 }
 
 bool_t
-xdr_s_vector (XDR *xdrs, s_vector *objp)
+xdr_arrayVector (XDR *xdrs, arrayVector *objp)
 {
 	register int32_t *buf;
 

@@ -7,132 +7,61 @@
 #include "calculadora.h"
 
 responseBasic *
-suma_1_svc(operationBasic operands,  struct svc_req *rqstp)
+suma_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
 	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_responseBasic, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.responseBasic_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first + operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
 responseBasic *
-resta_1_svc(operationBasic operands,  struct svc_req *rqstp)
+resta_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
 	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
+	/*
+	 * insert server code here
+	 */
 
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_responseBasic, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.responseBasic_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first - operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
 	return &result;
 }
 
 responseBasic *
-multiplicacion_1_svc(operationBasic operands,  struct svc_req *rqstp)
+multiplicacion_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
 	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
+	/*
+	 * insert server code here
+	 */
 
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_responseBasic, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.responseBasic_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first * operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
 	return &result;
 }
 
 responseBasic *
-division_1_svc(operationBasic operands,  struct svc_req *rqstp)
+division_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
 	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_responseBasic, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.responseBasic_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first / operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
 responseVectores *
-sumavectores_1_svc(vectorData v1, vectorData v2,  struct svc_req *rqstp)
+sumavectores_1_svc(vector v1, vector v2,  struct svc_req *rqstp)
 {
 	static responseVectores  result;
 
-	vectorData calculation;
-
-	int *dim;
-	dim = &result.responseVectores_u.v.vectorDim;
-
-	vectorData *values;
-	values = &result.responseVectores_u.v.vectorValues;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_responseVectores, &result);
-	
-	(*dim) = v1.vectorDim;
-	values = malloc(v1.vectorDim*sizeof(double));
-
-	//Se calcula el resultado de la operacion
-	for(int i = 0; i < v1.vectorDim;i++){
-		
-		calculation.vectorValues[i]  =  v1.vectorValues[i] + v2.vectorValues[i];
-		printf("%f + %f = %f\n", v1.vectorValues[i],v2.vectorValues[i],calculation.vectorValues[i]);
-	}
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.responseVectores_u.v.vectorValues
-	(*values) = calculation;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }

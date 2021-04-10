@@ -28,13 +28,13 @@ struct responseBasic {
 };
 typedef struct responseBasic responseBasic;
 
-typedef struct s_vector vectorData;
+typedef struct arrayVector vectorData;
 
-struct s_vector {
+struct arrayVector {
 	int vectorDim;
 	double *vectorValues;
 };
-typedef struct s_vector s_vector;
+typedef struct arrayVector arrayVector;
 
 struct responseVectores {
 	int error;
@@ -45,8 +45,8 @@ struct responseVectores {
 typedef struct responseVectores responseVectores;
 
 struct sumavectores_1_argument {
-	s_vector v1;
-	s_vector v2;
+	vector v1;
+	vector v2;
 };
 typedef struct sumavectores_1_argument sumavectores_1_argument;
 
@@ -67,8 +67,8 @@ extern  responseBasic * multiplicacion_1_svc(operationBasic , struct svc_req *);
 extern  responseBasic * division_1(operationBasic , CLIENT *);
 extern  responseBasic * division_1_svc(operationBasic , struct svc_req *);
 #define SUMAVECTORES 5
-extern  responseVectores * sumavectores_1(s_vector , s_vector , CLIENT *);
-extern  responseVectores * sumavectores_1_svc(s_vector , s_vector , struct svc_req *);
+extern  responseVectores * sumavectores_1(vector , vector , CLIENT *);
+extern  responseVectores * sumavectores_1_svc(vector , vector , struct svc_req *);
 extern int calculadoraprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
@@ -96,7 +96,7 @@ extern int calculadoraprog_1_freeresult ();
 extern  bool_t xdr_operationBasic (XDR *, operationBasic*);
 extern  bool_t xdr_responseBasic (XDR *, responseBasic*);
 extern  bool_t xdr_vectorData (XDR *, vectorData*);
-extern  bool_t xdr_s_vector (XDR *, s_vector*);
+extern  bool_t xdr_arrayVector (XDR *, arrayVector*);
 extern  bool_t xdr_responseVectores (XDR *, responseVectores*);
 extern  bool_t xdr_sumavectores_1_argument (XDR *, sumavectores_1_argument*);
 
@@ -104,7 +104,7 @@ extern  bool_t xdr_sumavectores_1_argument (XDR *, sumavectores_1_argument*);
 extern bool_t xdr_operationBasic ();
 extern bool_t xdr_responseBasic ();
 extern bool_t xdr_vectorData ();
-extern bool_t xdr_s_vector ();
+extern bool_t xdr_arrayVector ();
 extern bool_t xdr_responseVectores ();
 extern bool_t xdr_sumavectores_1_argument ();
 
