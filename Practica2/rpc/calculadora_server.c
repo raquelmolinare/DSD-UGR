@@ -111,41 +111,30 @@ sumavectores_1_svc(vectorData v1, vectorData v2,  struct svc_req *rqstp)
 {
 	static responseVectores  result;
 
-	vectorData calculation;
-
-	printf("1: hola\n");
-
+	//Puntero a la dimension del vector
 	int *dim;
 	dim = &result.responseVectores_u.v.vectorData_len;
 
 	vectorData *values;
 	values = &result.responseVectores_u.v.vectorData_val;
 
-	printf("2: hola\n");
-
 
 	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
 	xdr_free(xdr_responseVectores, &result);
 	
+	//Se asigna la dimension
 	(*dim) = v1.vectorData_len;
+	//Se redimensiona
 	values = malloc(v1.vectorData_len*sizeof(double));
-
-	printf("3: hola\n");
-
 
 	//Se calcula el resultado de la operacion
 	for(int i = 0; i < v1.vectorData_len;i++){
-		
-		calculation.vectorData_val[i]  =  v1.vectorData_val[i] + v2.vectorData_val[i];
-		printf("%f + %f = %f\n", v1.vectorData_val[i],v2.vectorData_val[i],calculation.vectorData_val[i]);
+
+		values->vectorData_val[i]  =  v1.vectorData_val[i] + v2.vectorData_val[i];
+		printf("%f + %f = %f\n", v1.vectorData_val[i],v2.vectorData_val[i],values->vectorData_val[i]);
 	}
 
 	printf("4: hola\n");
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.responseVectores_u.v.vectorData_val
-	(*values) = calculation;
 
 	return &result;
 }
