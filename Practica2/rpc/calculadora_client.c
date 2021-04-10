@@ -140,7 +140,7 @@ main (int argc, char *argv[])
 
 	v1.vectorData_len = 5;
 	for(int i = 0; i < v1.vectorData_len; i++){
-		v1.vectorData_val[i] = 5.0;
+		scanf("%f",&v1.vectorData_val[i]);
 	}
 	v1.vectorData_val = malloc(v1.vectorData_len*sizeof(double));
 
