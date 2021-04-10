@@ -99,6 +99,8 @@ xdr_operationVectores3D (XDR *xdrs, operationVectores3D *objp)
 		 return FALSE;
 	 if (!xdr_vector3D (xdrs, &objp->second))
 		 return FALSE;
+	 if (!xdr_vector3D (xdrs, &objp->third))
+		 return FALSE;
 	return TRUE;
 }
 

@@ -58,6 +58,7 @@ typedef struct vector3D vector3D;
 struct operationVectores3D {
 	vector3D first;
 	vector3D second;
+	vector3D third;
 };
 typedef struct operationVectores3D operationVectores3D;
 
