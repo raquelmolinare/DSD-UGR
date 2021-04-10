@@ -20,19 +20,22 @@ suma_1_svc(operation operands,  struct svc_req *rqstp)
 	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
 	xdr_free(xdr_response, &result);
 
+	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
 	calculationp = &result.response_u.result;
 
-	calculation = *calculationp;
+	//calculation = *calculationp;
 	printf("2: calculation = %f \n", calculation);
 	printf("2: calculationp = %p \n", calculationp);
 
+	//Se calcula el resultado de la operacion
 	calculation = operands.first + operands.second;
 	printf("3: calculation = %f \n", calculation);
 	printf("3: calculationp = %p \n", calculationp);
 
+	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
+	//Por lo que se cambia el result.response_u.result
+	(*calculationp) = calculation;
 
-
-	calculationp = &calculation;
 	printf("4: result.response_u.result = %f \n", result.response_u.result);
 
 
