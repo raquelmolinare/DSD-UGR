@@ -6,160 +6,102 @@
 
 #include "calculadora.h"
 
-void
-calculadoraprog_basicas(char *host, double a, char operation, double b)
-{
-	CLIENT *clnt;
-	responseBasic  *result;
-
-	//Se define la estructura operation que contiene los operandos a y b 
-	// que será el argumento de las operaciones
-	struct operationBasic operands;
-	operands.first = a;
-	operands.second = b;
-
-
-	#ifndef	DEBUG
-		clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
-		if (clnt == NULL) {
-			clnt_pcreateerror (host);
-			exit (1);
-		}
-	#endif	/* DEBUG */
-
-	//Se realiza la operacion según el tipo de operando
-	switch (operation)
-    {
-        case '+': //Suma
-            result = suma_1(operands, clnt);
-			if (result == (responseBasic *) NULL) {
-				clnt_perror (clnt, "call failed");
-			}
-            break;
-
-        case '-'://Resta
-           	result = resta_1(operands, clnt);
-			if (result == (responseBasic *) NULL) {
-				clnt_perror (clnt, "call failed");
-			}
-            break;
-
-        case '*': //Multiplicacion
-            result = multiplicacion_1(operands, clnt);
-			if (result == (responseBasic *) NULL) {
-				clnt_perror (clnt, "call failed");
-			}
-            break;
-
-        case '/':  //Division
-            result = division_1(operands, clnt);
-			if (result == (responseBasic *) NULL) {
-				clnt_perror (clnt, "call failed");
-			}
-            break;
-        
-        default:
-            break;
-    }
-
-	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
-	
-
-	//Se libera la memoria asignada por la llamada RPC
-	xdr_free (xdr_responseBasic, result);
-
-	#ifndef	DEBUG
-		clnt_destroy (clnt);
-	#endif	 /* DEBUG */
-}
-
 
 void
-calculadoraprog_vectores(char *host, vectorData v1, vectorData v2)
+calculadoraprog_1(char *host)
 {
 	CLIENT *clnt;
-	responseVectores  *result;
-	
+	responseBasic  *result_1;
+	operationBasic suma_1_arg1;
+	responseBasic  *result_2;
+	operationBasic resta_1_arg1;
+	responseBasic  *result_3;
+	operationBasic multiplicacion_1_arg1;
+	responseBasic  *result_4;
+	operationBasic division_1_arg1;
+	responseBasic  *result_5;
+	operationBasic logaritmo_1_arg1;
+	responseBasic  *result_6;
+	operationBasic potencia_1_arg1;
+	responseVectores  *result_7;
+	operationVectores sumavectores_1_arg1;
+	responseVectores  *result_8;
+	operationVectores restavectores_1_arg1;
+	responseBasic  *result_9;
+	operationVectores prodescalar3d_1_arg1;
+	responseVectores  *result_10;
+	operationVectores prodvectorial3d_1_arg1;
+	responseVectores  *result_11;
+	operationMatrices sumamatrices_1_arg1;
 
-	#ifndef	DEBUG
-		clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
-		if (clnt == NULL) {
-			clnt_pcreateerror (host);
-			exit (1);
-		}
-	#endif	/* DEBUG */
+#ifndef	DEBUG
+	clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
+	if (clnt == NULL) {
+		clnt_pcreateerror (host);
+		exit (1);
+	}
+#endif	/* DEBUG */
 
-
-	result = sumavectores_1(v1, v2, clnt);
-	if (result == (responseVectores *) NULL) {
+	result_1 = suma_1(suma_1_arg1, clnt);
+	if (result_1 == (responseBasic *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-
-	//Se muestra el resultado
-	printf("El resultado de sumar los vectores es: ");
-	for(int i = 0; i < result->responseVectores_u.v.vectorData_len; i++){
-		printf("%f  ", result->responseVectores_u.v.vectorData_val[i]);
+	result_2 = resta_1(resta_1_arg1, clnt);
+	if (result_2 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
 	}
-	printf("\n");
-
-	//Se libera la memoria asignada por la llamada RPC
-	xdr_free (xdr_responseVectores, result);
-
-	#ifndef	DEBUG
-		clnt_destroy (clnt);
-	#endif	 /* DEBUG */
+	result_3 = multiplicacion_1(multiplicacion_1_arg1, clnt);
+	if (result_3 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_4 = division_1(division_1_arg1, clnt);
+	if (result_4 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_5 = logaritmo_1(logaritmo_1_arg1, clnt);
+	if (result_5 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_6 = potencia_1(potencia_1_arg1, clnt);
+	if (result_6 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_7 = sumavectores_1(sumavectores_1_arg1, clnt);
+	if (result_7 == (responseVectores *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_8 = restavectores_1(restavectores_1_arg1, clnt);
+	if (result_8 == (responseVectores *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_9 = prodescalar3d_1(prodescalar3d_1_arg1, clnt);
+	if (result_9 == (responseBasic *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_10 = prodvectorial3d_1(prodvectorial3d_1_arg1, clnt);
+	if (result_10 == (responseVectores *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	result_11 = sumamatrices_1(sumamatrices_1_arg1, clnt);
+	if (result_11 == (responseVectores *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+#ifndef	DEBUG
+	clnt_destroy (clnt);
+#endif	 /* DEBUG */
 }
 
 
 int
 main (int argc, char *argv[])
 {
-	//Declaracion de variables
 	char *host;
-	double a, b;
-	char operation;
 
-	if (argc  != 5) {
+	if (argc < 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
-
-	//Se almacena la peticion
 	host = argv[1];
-	a = atof(argv[2]);
-	b = atof(argv[4]);
-	operation = *argv[3];
-
-	calculadoraprog_basicas (host,a,operation,b);
-
-	vectorData v1, v2;
-
-	printf("	1: adios\n");
-
-	printf(" len = %d\n", v1.vectorData_len);
-
-	v1.vectorData_len = 5;
-	v1.vectorData_val = malloc(5*sizeof(double));
-
-	printf(" len = %d\n", v1.vectorData_len);
-
-	for(int i = 0; i < v1.vectorData_len; i++){
-		scanf("%lf",&v1.vectorData_val[i]);
-	}
-
-	printf("	2: adios\n");
-
-
-	v2.vectorData_len = 5;
-	v2.vectorData_val = malloc(v2.vectorData_len*sizeof(double));
-	
-	for(int i = 0; i < v2.vectorData_len; i++){
-		v2.vectorData_val[i] = 5.0;
-	}
-	
-
-	calculadoraprog_vectores (host,v1,v2);
-
+	calculadoraprog_1 (host);
 exit (0);
 }

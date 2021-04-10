@@ -47,6 +47,18 @@ xdr_vectorData (XDR *xdrs, vectorData *objp)
 }
 
 bool_t
+xdr_operationVectores (XDR *xdrs, operationVectores *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_vectorData (xdrs, &objp->first))
+		 return FALSE;
+	 if (!xdr_vectorData (xdrs, &objp->second))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
 xdr_responseVectores (XDR *xdrs, responseVectores *objp)
 {
 	register int32_t *buf;
@@ -55,7 +67,7 @@ xdr_responseVectores (XDR *xdrs, responseVectores *objp)
 		 return FALSE;
 	switch (objp->error) {
 	case 0:
-		 if (!xdr_vectorData (xdrs, &objp->responseVectores_u.v))
+		 if (!xdr_vectorData (xdrs, &objp->responseVectores_u.vResult))
 			 return FALSE;
 		break;
 	default:
@@ -65,11 +77,69 @@ xdr_responseVectores (XDR *xdrs, responseVectores *objp)
 }
 
 bool_t
-xdr_sumavectores_1_argument (XDR *xdrs, sumavectores_1_argument *objp)
+xdr_vector3D (XDR *xdrs, vector3D *objp)
 {
-	 if (!xdr_vectorData (xdrs, &objp->v1))
+	register int32_t *buf;
+
+	 if (!xdr_double (xdrs, &objp->x))
 		 return FALSE;
-	 if (!xdr_vectorData (xdrs, &objp->v2))
+	 if (!xdr_double (xdrs, &objp->y))
 		 return FALSE;
+	 if (!xdr_double (xdrs, &objp->z))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
+xdr_matrizData (XDR *xdrs, matrizData *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_matriz (xdrs, objp))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
+xdr_matriz (XDR *xdrs, matriz *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_int (xdrs, &objp->f))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->c))
+		 return FALSE;
+	 if (!xdr_vectorData (xdrs, &objp->m))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
+xdr_operationMatrices (XDR *xdrs, operationMatrices *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_matrizData (xdrs, &objp->first))
+		 return FALSE;
+	 if (!xdr_matrizData (xdrs, &objp->second))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
+xdr_responseMatrices (XDR *xdrs, responseMatrices *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_int (xdrs, &objp->error))
+		 return FALSE;
+	switch (objp->error) {
+	case 0:
+		 if (!xdr_matrizData (xdrs, &objp->responseMatrices_u.mResult))
+			 return FALSE;
+		break;
+	default:
+		break;
+	}
 	return TRUE;
 }

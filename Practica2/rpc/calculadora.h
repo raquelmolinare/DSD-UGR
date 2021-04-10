@@ -33,19 +33,49 @@ typedef struct {
 	double *vectorData_val;
 } vectorData;
 
+struct operationVectores {
+	vectorData first;
+	vectorData second;
+};
+typedef struct operationVectores operationVectores;
+
 struct responseVectores {
 	int error;
 	union {
-		vectorData v;
+		vectorData vResult;
 	} responseVectores_u;
 };
 typedef struct responseVectores responseVectores;
 
-struct sumavectores_1_argument {
-	vectorData v1;
-	vectorData v2;
+struct vector3D {
+	double x;
+	double y;
+	double z;
 };
-typedef struct sumavectores_1_argument sumavectores_1_argument;
+typedef struct vector3D vector3D;
+
+typedef struct matriz matrizData;
+
+struct matriz {
+	int f;
+	int c;
+	vectorData m;
+};
+typedef struct matriz matriz;
+
+struct operationMatrices {
+	matrizData first;
+	matrizData second;
+};
+typedef struct operationMatrices operationMatrices;
+
+struct responseMatrices {
+	int error;
+	union {
+		matrizData mResult;
+	} responseMatrices_u;
+};
+typedef struct responseMatrices responseMatrices;
 
 #define CALCULADORAPROG 0x20000001
 #define CALCULADORAVERS 1
@@ -63,9 +93,27 @@ extern  responseBasic * multiplicacion_1_svc(operationBasic , struct svc_req *);
 #define DIVISION 4
 extern  responseBasic * division_1(operationBasic , CLIENT *);
 extern  responseBasic * division_1_svc(operationBasic , struct svc_req *);
-#define SUMAVECTORES 5
-extern  responseVectores * sumavectores_1(vectorData , vectorData , CLIENT *);
-extern  responseVectores * sumavectores_1_svc(vectorData , vectorData , struct svc_req *);
+#define LOGARITMO 5
+extern  responseBasic * logaritmo_1(operationBasic , CLIENT *);
+extern  responseBasic * logaritmo_1_svc(operationBasic , struct svc_req *);
+#define POTENCIA 6
+extern  responseBasic * potencia_1(operationBasic , CLIENT *);
+extern  responseBasic * potencia_1_svc(operationBasic , struct svc_req *);
+#define SUMAVECTORES 7
+extern  responseVectores * sumavectores_1(operationVectores , CLIENT *);
+extern  responseVectores * sumavectores_1_svc(operationVectores , struct svc_req *);
+#define RESTAVECTORES 8
+extern  responseVectores * restavectores_1(operationVectores , CLIENT *);
+extern  responseVectores * restavectores_1_svc(operationVectores , struct svc_req *);
+#define PRODESCALAR3D 9
+extern  responseBasic * prodescalar3d_1(operationVectores , CLIENT *);
+extern  responseBasic * prodescalar3d_1_svc(operationVectores , struct svc_req *);
+#define PRODVECTORIAL3D 10
+extern  responseVectores * prodvectorial3d_1(operationVectores , CLIENT *);
+extern  responseVectores * prodvectorial3d_1_svc(operationVectores , struct svc_req *);
+#define SUMAMATRICES 11
+extern  responseVectores * sumamatrices_1(operationMatrices , CLIENT *);
+extern  responseVectores * sumamatrices_1_svc(operationMatrices , struct svc_req *);
 extern int calculadoraprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
@@ -81,9 +129,27 @@ extern  responseBasic * multiplicacion_1_svc();
 #define DIVISION 4
 extern  responseBasic * division_1();
 extern  responseBasic * division_1_svc();
-#define SUMAVECTORES 5
+#define LOGARITMO 5
+extern  responseBasic * logaritmo_1();
+extern  responseBasic * logaritmo_1_svc();
+#define POTENCIA 6
+extern  responseBasic * potencia_1();
+extern  responseBasic * potencia_1_svc();
+#define SUMAVECTORES 7
 extern  responseVectores * sumavectores_1();
 extern  responseVectores * sumavectores_1_svc();
+#define RESTAVECTORES 8
+extern  responseVectores * restavectores_1();
+extern  responseVectores * restavectores_1_svc();
+#define PRODESCALAR3D 9
+extern  responseBasic * prodescalar3d_1();
+extern  responseBasic * prodescalar3d_1_svc();
+#define PRODVECTORIAL3D 10
+extern  responseVectores * prodvectorial3d_1();
+extern  responseVectores * prodvectorial3d_1_svc();
+#define SUMAMATRICES 11
+extern  responseVectores * sumamatrices_1();
+extern  responseVectores * sumamatrices_1_svc();
 extern int calculadoraprog_1_freeresult ();
 #endif /* K&R C */
 
@@ -93,15 +159,25 @@ extern int calculadoraprog_1_freeresult ();
 extern  bool_t xdr_operationBasic (XDR *, operationBasic*);
 extern  bool_t xdr_responseBasic (XDR *, responseBasic*);
 extern  bool_t xdr_vectorData (XDR *, vectorData*);
+extern  bool_t xdr_operationVectores (XDR *, operationVectores*);
 extern  bool_t xdr_responseVectores (XDR *, responseVectores*);
-extern  bool_t xdr_sumavectores_1_argument (XDR *, sumavectores_1_argument*);
+extern  bool_t xdr_vector3D (XDR *, vector3D*);
+extern  bool_t xdr_matrizData (XDR *, matrizData*);
+extern  bool_t xdr_matriz (XDR *, matriz*);
+extern  bool_t xdr_operationMatrices (XDR *, operationMatrices*);
+extern  bool_t xdr_responseMatrices (XDR *, responseMatrices*);
 
 #else /* K&R C */
 extern bool_t xdr_operationBasic ();
 extern bool_t xdr_responseBasic ();
 extern bool_t xdr_vectorData ();
+extern bool_t xdr_operationVectores ();
 extern bool_t xdr_responseVectores ();
-extern bool_t xdr_sumavectores_1_argument ();
+extern bool_t xdr_vector3D ();
+extern bool_t xdr_matrizData ();
+extern bool_t xdr_matriz ();
+extern bool_t xdr_operationMatrices ();
+extern bool_t xdr_responseMatrices ();
 
 #endif /* K&R C */
 

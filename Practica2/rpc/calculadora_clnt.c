@@ -69,16 +69,104 @@ division_1(operationBasic arg1,  CLIENT *clnt)
 	return (&clnt_res);
 }
 
-responseVectores *
-sumavectores_1(vectorData v1, vectorData v2,  CLIENT *clnt)
+responseBasic *
+logaritmo_1(operationBasic arg1,  CLIENT *clnt)
 {
-	sumavectores_1_argument arg;
+	static responseBasic clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, LOGARITMO,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseBasic *
+potencia_1(operationBasic arg1,  CLIENT *clnt)
+{
+	static responseBasic clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, POTENCIA,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseVectores *
+sumavectores_1(operationVectores arg1,  CLIENT *clnt)
+{
 	static responseVectores clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	arg.v1 = v1;
-	arg.v2 = v2;
-	if (clnt_call (clnt, SUMAVECTORES, (xdrproc_t) xdr_sumavectores_1_argument, (caddr_t) &arg,
+	if (clnt_call (clnt, SUMAVECTORES,
+		(xdrproc_t) xdr_operationVectores, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseVectores *
+restavectores_1(operationVectores arg1,  CLIENT *clnt)
+{
+	static responseVectores clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, RESTAVECTORES,
+		(xdrproc_t) xdr_operationVectores, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseBasic *
+prodescalar3d_1(operationVectores arg1,  CLIENT *clnt)
+{
+	static responseBasic clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, PRODESCALAR3D,
+		(xdrproc_t) xdr_operationVectores, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseVectores *
+prodvectorial3d_1(operationVectores arg1,  CLIENT *clnt)
+{
+	static responseVectores clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, PRODVECTORIAL3D,
+		(xdrproc_t) xdr_operationVectores, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseVectores *
+sumamatrices_1(operationMatrices arg1,  CLIENT *clnt)
+{
+	static responseVectores clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	if (clnt_call (clnt, SUMAMATRICES,
+		(xdrproc_t) xdr_operationMatrices, (caddr_t) &arg1,
 		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
