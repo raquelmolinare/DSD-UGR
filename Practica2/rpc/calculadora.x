@@ -6,10 +6,8 @@ struct operation{
 };
 
 union response switch (int error){
-    case: 0
+    case 0:
         double result;
-        break;
-
     default:
         void;
 };
