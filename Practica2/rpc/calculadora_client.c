@@ -139,7 +139,7 @@ main (int argc, char *argv[])
 
 	printf(" len = %f\n", v1.vectorData_len);
 
-	v1.vectorData_len = 5;
+	v1.vectorData_len = 5.0;
 
 	printf(" len = %f\n", v1.vectorData_len);
 
