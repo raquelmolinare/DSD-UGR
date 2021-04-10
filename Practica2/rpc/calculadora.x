@@ -30,15 +30,11 @@ union responseVectores switch (int error){
 program CALCULADORAPROG {
 
     version CALCULADORAVERS {
-        //Operaciones básicas
         responseBasic SUMA (operationBasic) = 1;
         responseBasic RESTA (operationBasic) = 2;
         responseBasic MULTIPLICACION (operationBasic) = 3;
         responseBasic DIVISION (operationBasic) = 4;
-
-        //Operaciones con vectores
         responseVectores SUMAVECTORES(vector v1, vector v2) = 5;
-
     } = 1;
 
 } = 0x20000001;
