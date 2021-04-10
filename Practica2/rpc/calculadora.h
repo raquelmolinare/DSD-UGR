@@ -15,8 +15,8 @@ extern "C" {
 
 
 struct operation {
-	double a;
-	double b;
+	double first;
+	double second;
 };
 typedef struct operation operation;
 

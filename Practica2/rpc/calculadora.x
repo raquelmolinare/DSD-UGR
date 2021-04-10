@@ -1,8 +1,8 @@
 /* Archivo calculadora.x: Realización de operaciones aritméticas de forma remota */
 
 struct operation{
-    double a;
-    double b;
+    double first;
+    double second;
 };
 
 union response switch (int error){
