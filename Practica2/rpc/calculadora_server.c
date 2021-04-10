@@ -15,6 +15,7 @@ suma_1_svc(operation operands,  struct svc_req *rqstp)
 	double calculation;
 
 	printf("1: calculation = %f \n", calculation);
+	printf("1: calculationp = %p \n", calculationp);
 
 	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
 	xdr_free(xdr_response, &result);
@@ -23,10 +24,12 @@ suma_1_svc(operation operands,  struct svc_req *rqstp)
 
 	calculation = *calculationp;
 	printf("2: calculation = %f \n", calculation);
-
+	printf("2: calculationp = %p \n", calculationp);
 
 	calculation = operands.first + operands.second;
 	printf("3: calculation = %f \n", calculation);
+	printf("3: calculationp = %p \n", calculationp);
+
 
 
 	calculationp = &calculation;

@@ -63,11 +63,6 @@ calculadoraprog_1(char *host, double a, char operation, double b)
             break;
     }
 
-	result = suma_1(operands, clnt);
-	if (result == (response *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-
 	//Se muestra el resultado
 	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->response_u.result);
 	
