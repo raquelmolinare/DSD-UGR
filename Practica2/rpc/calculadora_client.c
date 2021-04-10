@@ -8,58 +8,93 @@
 
 
 void
-calculadoraprog_1(char *host)
+calculadoraprog_1(char *host, double a, char operation, double b)
 {
 	CLIENT *clnt;
-	response  *result_1;
-	operation suma_1_arg1;
-	response  *result_2;
-	operation resta_1_arg1;
-	response  *result_3;
-	operation multiplicacion_1_arg1;
-	response  *result_4;
-	operation division_1_arg1;
+	response  *result;
 
-#ifndef	DEBUG
-	clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
-	if (clnt == NULL) {
-		clnt_pcreateerror (host);
-		exit (1);
-	}
-#endif	/* DEBUG */
+	//Se define la estructura operation que contiene los operandos a y b 
+	// que será el argumento de las operaciones
+	struct operation operands;
+	operands.first = a;
+	operands.second = b;
 
-	result_1 = suma_1(suma_1_arg1, clnt);
-	if (result_1 == (response *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_2 = resta_1(resta_1_arg1, clnt);
-	if (result_2 == (response *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_3 = multiplicacion_1(multiplicacion_1_arg1, clnt);
-	if (result_3 == (response *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_4 = division_1(division_1_arg1, clnt);
-	if (result_4 == (response *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-#ifndef	DEBUG
-	clnt_destroy (clnt);
-#endif	 /* DEBUG */
+
+	#ifndef	DEBUG
+		clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
+		if (clnt == NULL) {
+			clnt_pcreateerror (host);
+			exit (1);
+		}
+	#endif	/* DEBUG */
+
+	//Se realiza la operacion según el tipo de operando
+	switch (operation)
+    {
+        case '+': //Suma
+            result = suma_1(operands, clnt);
+			if (result == (response *) NULL) {
+				clnt_perror (clnt, "call failed");
+			}
+            break;
+
+        case '-'://Resta
+           	result = resta_1(operands, clnt);
+			if (result == (response *) NULL) {
+				clnt_perror (clnt, "call failed");
+			}
+            break;
+
+        case '*': //Multiplicacion
+            result = multiplicacion_1(operands, clnt);
+			if (result == (response *) NULL) {
+				clnt_perror (clnt, "call failed");
+			}
+            break;
+
+        case '/':  //Division
+            result = division_1(operands, clnt);
+			if (result == (response *) NULL) {
+				clnt_perror (clnt, "call failed");
+			}
+            break;
+        
+        default:
+            break;
+    }
+
+	//Se muestra el resultado
+	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->response_u.result);
+	
+
+	//Se libera la memoria asignada por la llamada RPC
+	xdr_free (xdr_response, result);
+
+	#ifndef	DEBUG
+		clnt_destroy (clnt);
+	#endif	 /* DEBUG */
 }
 
 
 int
 main (int argc, char *argv[])
 {
+	//Declaracion de variables
 	char *host;
+	double a, b;
+	char operation;
 
-	if (argc < 2) {
+	if (argc  != 5) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
+
+	//Se almacena la peticion
 	host = argv[1];
-	calculadoraprog_1 (host);
+	a = atof(argv[2]);
+	b = atof(argv[4]);
+	operation = *argv[3];
+
+	calculadoraprog_1 (host,a,operation,b);
 exit (0);
 }

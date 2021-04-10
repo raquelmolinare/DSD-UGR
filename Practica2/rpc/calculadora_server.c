@@ -7,7 +7,28 @@
 #include "calculadora.h"
 
 response *
-suma_1_svc(operation arg1,  struct svc_req *rqstp)
+suma_1_svc(operation operands,  struct svc_req *rqstp)
+{
+	static response  result;
+
+	double *calculationp;
+	double calculation;
+
+
+	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
+	xdr_free(xdr_response, &result);
+
+	calculationp = &result.response_u.result;
+
+	calculation = operands.first + operands.second;
+
+	calculationp = &calculation;
+
+	return &result;
+}
+
+response *
+resta_1_svc(operation operands,  struct svc_req *rqstp)
 {
 	static response  result;
 
@@ -19,7 +40,7 @@ suma_1_svc(operation arg1,  struct svc_req *rqstp)
 }
 
 response *
-resta_1_svc(operation arg1,  struct svc_req *rqstp)
+multiplicacion_1_svc(operation operands,  struct svc_req *rqstp)
 {
 	static response  result;
 
@@ -31,19 +52,7 @@ resta_1_svc(operation arg1,  struct svc_req *rqstp)
 }
 
 response *
-multiplicacion_1_svc(operation arg1,  struct svc_req *rqstp)
-{
-	static response  result;
-
-	/*
-	 * insert server code here
-	 */
-
-	return &result;
-}
-
-response *
-division_1_svc(operation arg1,  struct svc_req *rqstp)
+division_1_svc(operation operands,  struct svc_req *rqstp)
 {
 	static response  result;
 
