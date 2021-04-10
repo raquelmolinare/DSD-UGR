@@ -65,13 +65,13 @@ _restavectores_1 (operationVectores  *argp, struct svc_req *rqstp)
 }
 
 static responseBasic *
-_prodescalar3d_1 (operationVectores  *argp, struct svc_req *rqstp)
+_prodescalar3d_1 (operationVectores3D  *argp, struct svc_req *rqstp)
 {
 	return (prodescalar3d_1_svc(*argp, rqstp));
 }
 
 static responseVectores *
-_prodvectorial3d_1 (operationVectores  *argp, struct svc_req *rqstp)
+_prodvectorial3d_1 (operationVectores3D  *argp, struct svc_req *rqstp)
 {
 	return (prodvectorial3d_1_svc(*argp, rqstp));
 }
@@ -94,8 +94,8 @@ calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		operationBasic potencia_1_arg;
 		operationVectores sumavectores_1_arg;
 		operationVectores restavectores_1_arg;
-		operationVectores prodescalar3d_1_arg;
-		operationVectores prodvectorial3d_1_arg;
+		operationVectores3D prodescalar3d_1_arg;
+		operationVectores3D prodvectorial3d_1_arg;
 		operationMatrices sumamatrices_1_arg;
 	} argument;
 	char *result;
@@ -156,13 +156,13 @@ calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		break;
 
 	case PRODESCALAR3D:
-		_xdr_argument = (xdrproc_t) xdr_operationVectores;
+		_xdr_argument = (xdrproc_t) xdr_operationVectores3D;
 		_xdr_result = (xdrproc_t) xdr_responseBasic;
 		local = (char *(*)(char *, struct svc_req *)) _prodescalar3d_1;
 		break;
 
 	case PRODVECTORIAL3D:
-		_xdr_argument = (xdrproc_t) xdr_operationVectores;
+		_xdr_argument = (xdrproc_t) xdr_operationVectores3D;
 		_xdr_result = (xdrproc_t) xdr_responseVectores;
 		local = (char *(*)(char *, struct svc_req *)) _prodvectorial3d_1;
 		break;

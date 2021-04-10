@@ -54,6 +54,13 @@ struct vector3D {
 };
 typedef struct vector3D vector3D;
 
+
+struct operationVectores3D {
+	vector3D first;
+	vector3D second;
+};
+typedef struct operationVectores3D operationVectores3D;
+
 typedef struct matriz matrizData;
 
 struct matriz {
@@ -106,11 +113,11 @@ extern  responseVectores * sumavectores_1_svc(operationVectores , struct svc_req
 extern  responseVectores * restavectores_1(operationVectores , CLIENT *);
 extern  responseVectores * restavectores_1_svc(operationVectores , struct svc_req *);
 #define PRODESCALAR3D 9
-extern  responseBasic * prodescalar3d_1(operationVectores , CLIENT *);
-extern  responseBasic * prodescalar3d_1_svc(operationVectores , struct svc_req *);
+extern  responseBasic * prodescalar3d_1(operationVectores3D , CLIENT *);
+extern  responseBasic * prodescalar3d_1_svc(operationVectores3D , struct svc_req *);
 #define PRODVECTORIAL3D 10
-extern  responseVectores * prodvectorial3d_1(operationVectores , CLIENT *);
-extern  responseVectores * prodvectorial3d_1_svc(operationVectores , struct svc_req *);
+extern  responseVectores * prodvectorial3d_1(operationVectores3D , CLIENT *);
+extern  responseVectores * prodvectorial3d_1_svc(operationVectores3D , struct svc_req *);
 #define SUMAMATRICES 11
 extern  responseVectores * sumamatrices_1(operationMatrices , CLIENT *);
 extern  responseVectores * sumamatrices_1_svc(operationMatrices , struct svc_req *);
@@ -162,6 +169,8 @@ extern  bool_t xdr_vectorData (XDR *, vectorData*);
 extern  bool_t xdr_operationVectores (XDR *, operationVectores*);
 extern  bool_t xdr_responseVectores (XDR *, responseVectores*);
 extern  bool_t xdr_vector3D (XDR *, vector3D*);
+extern  bool_t xdr_vector3D (XDR *, vector3D*);
+extern  bool_t xdr_operationVectores3D (XDR *, operationVectores3D*);
 extern  bool_t xdr_matrizData (XDR *, matrizData*);
 extern  bool_t xdr_matriz (XDR *, matriz*);
 extern  bool_t xdr_operationMatrices (XDR *, operationMatrices*);
@@ -174,6 +183,8 @@ extern bool_t xdr_vectorData ();
 extern bool_t xdr_operationVectores ();
 extern bool_t xdr_responseVectores ();
 extern bool_t xdr_vector3D ();
+extern bool_t xdr_vector3D ();
+extern bool_t xdr_operationVectores3D ();
 extern bool_t xdr_matrizData ();
 extern bool_t xdr_matriz ();
 extern bool_t xdr_operationMatrices ();

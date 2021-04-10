@@ -91,6 +91,18 @@ xdr_vector3D (XDR *xdrs, vector3D *objp)
 }
 
 bool_t
+xdr_operationVectores3D (XDR *xdrs, operationVectores3D *objp)
+{
+	register int32_t *buf;
+
+	 if (!xdr_vector3D (xdrs, &objp->first))
+		 return FALSE;
+	 if (!xdr_vector3D (xdrs, &objp->second))
+		 return FALSE;
+	return TRUE;
+}
+
+bool_t
 xdr_matrizData (XDR *xdrs, matrizData *objp)
 {
 	register int32_t *buf;

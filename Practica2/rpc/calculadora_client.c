@@ -28,9 +28,9 @@ calculadoraprog_1(char *host)
 	responseVectores  *result_8;
 	operationVectores restavectores_1_arg1;
 	responseBasic  *result_9;
-	operationVectores prodescalar3d_1_arg1;
+	operationVectores3D prodescalar3d_1_arg1;
 	responseVectores  *result_10;
-	operationVectores prodvectorial3d_1_arg1;
+	operationVectores3D prodvectorial3d_1_arg1;
 	responseVectores  *result_11;
 	operationMatrices sumamatrices_1_arg1;
 
