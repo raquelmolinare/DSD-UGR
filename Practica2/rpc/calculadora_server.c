@@ -6,102 +6,62 @@
 
 #include "calculadora.h"
 
-response *
-suma_1_svc(operation operands,  struct svc_req *rqstp)
+responseBasic *
+suma_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
-	static response  result;
+	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_response, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.response_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first + operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
-
-	return (&result);
-}
-
-response *
-resta_1_svc(operation operands,  struct svc_req *rqstp)
-{
-	static response  result;
-
-	double *calculationp;
-	double calculation;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_response, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.response_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first - operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
-response *
-multiplicacion_1_svc(operation operands,  struct svc_req *rqstp)
+responseBasic *
+resta_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
-	static response  result;
+	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
-
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_response, &result);
-
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.response_u.result;
-
-	//Se calcula el resultado de la operacion
-	calculation = operands.first * operands.second;
-
-
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
-response *
-division_1_svc(operation operands,  struct svc_req *rqstp)
+responseBasic *
+multiplicacion_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 {
-	static response  result;
+	static responseBasic  result;
 
-	double *calculationp;
-	double calculation;
+	/*
+	 * insert server code here
+	 */
 
-	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
-	xdr_free(xdr_response, &result);
+	return &result;
+}
 
-	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.response_u.result;
+responseBasic *
+division_1_svc(operationBasic arg1,  struct svc_req *rqstp)
+{
+	static responseBasic  result;
 
-	//Se calcula el resultado de la operacion
-	calculation = operands.first / operands.second;
+	/*
+	 * insert server code here
+	 */
 
+	return &result;
+}
 
-	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
-	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation;
+responseVectores *
+sumavectores_1_svc(vector v1, vector v2,  struct svc_req *rqstp)
+{
+	static responseVectores  result;
+
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }

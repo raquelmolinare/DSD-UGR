@@ -14,63 +14,99 @@ extern "C" {
 #endif
 
 
-struct operation {
+struct operationBasic {
 	double first;
 	double second;
 };
-typedef struct operation operation;
+typedef struct operationBasic operationBasic;
 
-struct response {
+struct responseBasic {
 	int error;
 	union {
 		double result;
-	} response_u;
+	} responseBasic_u;
 };
-typedef struct response response;
+typedef struct responseBasic responseBasic;
+
+typedef struct s_vector vectorData;
+
+struct s_vector {
+	int vectorDim;
+	double *vectorValues;
+};
+typedef struct s_vector s_vector;
+
+struct responseVectores {
+	int error;
+	union {
+		vectorData v;
+	} responseVectores_u;
+};
+typedef struct responseVectores responseVectores;
+
+struct sumavectores_1_argument {
+	vector v1;
+	vector v2;
+};
+typedef struct sumavectores_1_argument sumavectores_1_argument;
 
 #define CALCULADORAPROG 0x20000001
 #define CALCULADORAVERS 1
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define SUMA 1
-extern  response * suma_1(operation , CLIENT *);
-extern  response * suma_1_svc(operation , struct svc_req *);
+extern  responseBasic * suma_1(operationBasic , CLIENT *);
+extern  responseBasic * suma_1_svc(operationBasic , struct svc_req *);
 #define RESTA 2
-extern  response * resta_1(operation , CLIENT *);
-extern  response * resta_1_svc(operation , struct svc_req *);
+extern  responseBasic * resta_1(operationBasic , CLIENT *);
+extern  responseBasic * resta_1_svc(operationBasic , struct svc_req *);
 #define MULTIPLICACION 3
-extern  response * multiplicacion_1(operation , CLIENT *);
-extern  response * multiplicacion_1_svc(operation , struct svc_req *);
+extern  responseBasic * multiplicacion_1(operationBasic , CLIENT *);
+extern  responseBasic * multiplicacion_1_svc(operationBasic , struct svc_req *);
 #define DIVISION 4
-extern  response * division_1(operation , CLIENT *);
-extern  response * division_1_svc(operation , struct svc_req *);
+extern  responseBasic * division_1(operationBasic , CLIENT *);
+extern  responseBasic * division_1_svc(operationBasic , struct svc_req *);
+#define SUMAVECTORES 5
+extern  responseVectores * sumavectores_1(vector , vector , CLIENT *);
+extern  responseVectores * sumavectores_1_svc(vector , vector , struct svc_req *);
 extern int calculadoraprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define SUMA 1
-extern  response * suma_1();
-extern  response * suma_1_svc();
+extern  responseBasic * suma_1();
+extern  responseBasic * suma_1_svc();
 #define RESTA 2
-extern  response * resta_1();
-extern  response * resta_1_svc();
+extern  responseBasic * resta_1();
+extern  responseBasic * resta_1_svc();
 #define MULTIPLICACION 3
-extern  response * multiplicacion_1();
-extern  response * multiplicacion_1_svc();
+extern  responseBasic * multiplicacion_1();
+extern  responseBasic * multiplicacion_1_svc();
 #define DIVISION 4
-extern  response * division_1();
-extern  response * division_1_svc();
+extern  responseBasic * division_1();
+extern  responseBasic * division_1_svc();
+#define SUMAVECTORES 5
+extern  responseVectores * sumavectores_1();
+extern  responseVectores * sumavectores_1_svc();
 extern int calculadoraprog_1_freeresult ();
 #endif /* K&R C */
 
 /* the xdr functions */
 
 #if defined(__STDC__) || defined(__cplusplus)
-extern  bool_t xdr_operation (XDR *, operation*);
-extern  bool_t xdr_response (XDR *, response*);
+extern  bool_t xdr_operationBasic (XDR *, operationBasic*);
+extern  bool_t xdr_responseBasic (XDR *, responseBasic*);
+extern  bool_t xdr_vectorData (XDR *, vectorData*);
+extern  bool_t xdr_s_vector (XDR *, s_vector*);
+extern  bool_t xdr_responseVectores (XDR *, responseVectores*);
+extern  bool_t xdr_sumavectores_1_argument (XDR *, sumavectores_1_argument*);
 
 #else /* K&R C */
-extern bool_t xdr_operation ();
-extern bool_t xdr_response ();
+extern bool_t xdr_operationBasic ();
+extern bool_t xdr_responseBasic ();
+extern bool_t xdr_vectorData ();
+extern bool_t xdr_s_vector ();
+extern bool_t xdr_responseVectores ();
+extern bool_t xdr_sumavectores_1_argument ();
 
 #endif /* K&R C */
 

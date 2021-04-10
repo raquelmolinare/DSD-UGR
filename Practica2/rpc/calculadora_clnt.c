@@ -9,60 +9,77 @@
 /* Default timeout can be changed using clnt_control() */
 static struct timeval TIMEOUT = { 25, 0 };
 
-response *
-suma_1(operation arg1,  CLIENT *clnt)
+responseBasic *
+suma_1(operationBasic arg1,  CLIENT *clnt)
 {
-	static response clnt_res;
+	static responseBasic clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, SUMA,
-		(xdrproc_t) xdr_operation, (caddr_t) &arg1,
-		(xdrproc_t) xdr_response, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}
 	return (&clnt_res);
 }
 
-response *
-resta_1(operation arg1,  CLIENT *clnt)
+responseBasic *
+resta_1(operationBasic arg1,  CLIENT *clnt)
 {
-	static response clnt_res;
+	static responseBasic clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, RESTA,
-		(xdrproc_t) xdr_operation, (caddr_t) &arg1,
-		(xdrproc_t) xdr_response, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}
 	return (&clnt_res);
 }
 
-response *
-multiplicacion_1(operation arg1,  CLIENT *clnt)
+responseBasic *
+multiplicacion_1(operationBasic arg1,  CLIENT *clnt)
 {
-	static response clnt_res;
+	static responseBasic clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, MULTIPLICACION,
-		(xdrproc_t) xdr_operation, (caddr_t) &arg1,
-		(xdrproc_t) xdr_response, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}
 	return (&clnt_res);
 }
 
-response *
-division_1(operation arg1,  CLIENT *clnt)
+responseBasic *
+division_1(operationBasic arg1,  CLIENT *clnt)
 {
-	static response clnt_res;
+	static responseBasic clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, DIVISION,
-		(xdrproc_t) xdr_operation, (caddr_t) &arg1,
-		(xdrproc_t) xdr_response, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_operationBasic, (caddr_t) &arg1,
+		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+responseVectores *
+sumavectores_1(vector v1, vector v2,  CLIENT *clnt)
+{
+	sumavectores_1_argument arg;
+	static responseVectores clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	arg.v1 = v1;
+	arg.v2 = v2;
+	if (clnt_call (clnt, SUMAVECTORES, (xdrproc_t) xdr_sumavectores_1_argument, (caddr_t) &arg,
+		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}
