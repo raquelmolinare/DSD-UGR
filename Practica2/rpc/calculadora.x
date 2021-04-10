@@ -13,7 +13,7 @@ union responseBasic switch (int error){
 };
 
 
-typedef struct s_vector vector; 
+typedef struct s_vector vectorData; 
 
 struct s_vector{
 	int vectorDim;
@@ -22,7 +22,7 @@ struct s_vector{
 
 union responseVectores switch (int error){
     case 0:
-       vector v;
+       vectorData v;
     default:
         void;
 };
