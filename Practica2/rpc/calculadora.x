@@ -39,9 +39,8 @@ typedef struct vector3D vector3D;
 struct operationVectores3D{
     vector3D first;
     vector3D second;
+    vector3D third;
 };
-
-
 
 
 /*-------Estructuras de datos para las operaciones con matrices----------*/
