@@ -1,13 +1,28 @@
 /* Archivo calculadora.x: Realización de operaciones aritméticas de forma remota */
 
-struct operation{
+struct operationBasic{
     double first;
     double second;
 };
 
-union response switch (int error){
+union responseBasic switch (int error){
     case 0:
         double result;
+    default:
+        void;
+};
+
+
+typedef struct s_vector vector; 
+
+struct s_vector{
+	int vectorDim;
+	double *vectorValues;
+};
+
+union responseVectores switch (int error){
+    case 0:
+       vector v;
     default:
         void;
 };
@@ -15,10 +30,15 @@ union response switch (int error){
 program CALCULADORAPROG {
 
     version CALCULADORAVERS {
-        response SUMA (operation) = 1;
-        response RESTA (operation) = 2;
-        response MULTIPLICACION (operation) = 3;
-        response DIVISION (operation) = 4;
+        //Operaciones básicas
+        responseBasic SUMA (operationBasic) = 1;
+        responseBasic RESTA (operationBasic) = 2;
+        responseBasic MULTIPLICACION (operationBasic) = 3;
+        responseBasic DIVISION (operationBasic) = 4;
+
+        //Operaciones con vectores
+        responseVectores SUMAVECTORES(vector v1, vector v2) = 5;
+
     } = 1;
 
 } = 0x20000001;
