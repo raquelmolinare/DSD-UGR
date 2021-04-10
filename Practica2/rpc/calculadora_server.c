@@ -125,14 +125,14 @@ sumavectores_1_svc(vectorData v1, vectorData v2,  struct svc_req *rqstp)
 	//Se asigna la dimension
 	(*dim) = v1.vectorData_len;
 	//Se redimensiona
-	values->vectorData_val = malloc(v1.vectorData_len*sizeof(double));
+	result.responseVectores_u.v.vectorData_val = malloc(v1.vectorData_len*sizeof(double));
 
 	printf("1: hola\n");
 
 	//Se calcula el resultado de la operacion
 	for(int i = 0; i < v1.vectorData_len;i++){
-		values->vectorData_val[i] =  v1.vectorData_val[i] + v2.vectorData_val[i];
-		//result.responseVectores_u.v.vectorData_val[i]  =  v1.vectorData_val[i] + v2.vectorData_val[i];
+		//values->vectorData_val[i] =  v1.vectorData_val[i] + v2.vectorData_val[i];
+		result.responseVectores_u.v.vectorData_val[i]  =  v1.vectorData_val[i] + v2.vectorData_val[i];
 		printf("%f + %f = %f\n", v1.vectorData_val[i],v2.vectorData_val[i],result.responseVectores_u.v.vectorData_val[i]);
 	}
 
