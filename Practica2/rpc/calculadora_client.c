@@ -8,10 +8,17 @@
 
 
 void
-calculadoraprog_1(char *host, double a, char operation, double b)
+calculadoraprog_1(char *host)
 {
 	CLIENT *clnt;
-	double  *result;
+	response  *result_1;
+	operation suma_1_arg1;
+	response  *result_2;
+	operation resta_1_arg1;
+	response  *result_3;
+	operation multiplicacion_1_arg1;
+	response  *result_4;
+	operation division_1_arg1;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");
@@ -21,21 +28,20 @@ calculadoraprog_1(char *host, double a, char operation, double b)
 	}
 #endif	/* DEBUG */
 
-	result = suma_1(a, b, clnt);
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, *result);
-	if (result == (double *) NULL) {
+	result_1 = suma_1(suma_1_arg1, clnt);
+	if (result_1 == (response *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	result = resta_1(a, b, clnt);
-	if (result == (double *) NULL) {
+	result_2 = resta_1(resta_1_arg1, clnt);
+	if (result_2 == (response *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	result = multiplicacion_1(a, b, clnt);
-	if (result == (double *) NULL) {
+	result_3 = multiplicacion_1(multiplicacion_1_arg1, clnt);
+	if (result_3 == (response *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	result = division_1(a, b, clnt);
-	if (result == (double *) NULL) {
+	result_4 = division_1(division_1_arg1, clnt);
+	if (result_4 == (response *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
 #ifndef	DEBUG
@@ -47,25 +53,13 @@ calculadoraprog_1(char *host, double a, char operation, double b)
 int
 main (int argc, char *argv[])
 {
-	//Declaracion de variables
 	char *host;
-	double a, b;
-	char operation;
 
-	if (argc != 5) {
+	if (argc < 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
-
-	//Se almacena la peticion
 	host = argv[1];
-	a = atof(argv[2]);
-	b = atof(argv[4]);
-	operation = *argv[3];
-
-
-	calculadoraprog_1 (host,a,operation,b);
-
-
+	calculadoraprog_1 (host);
 exit (0);
 }

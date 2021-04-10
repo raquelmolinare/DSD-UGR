@@ -6,41 +6,31 @@
 #include "calculadora.h"
 
 bool_t
-xdr_suma_1_argument (XDR *xdrs, suma_1_argument *objp)
+xdr_operation (XDR *xdrs, operation *objp)
 {
-	 if (!xdr_double (xdrs, &objp->arg1))
+	register int32_t *buf;
+
+	 if (!xdr_double (xdrs, &objp->a))
 		 return FALSE;
-	 if (!xdr_double (xdrs, &objp->arg2))
+	 if (!xdr_double (xdrs, &objp->b))
 		 return FALSE;
 	return TRUE;
 }
 
 bool_t
-xdr_resta_1_argument (XDR *xdrs, resta_1_argument *objp)
+xdr_response (XDR *xdrs, response *objp)
 {
-	 if (!xdr_double (xdrs, &objp->arg1))
-		 return FALSE;
-	 if (!xdr_double (xdrs, &objp->arg2))
-		 return FALSE;
-	return TRUE;
-}
+	register int32_t *buf;
 
-bool_t
-xdr_multiplicacion_1_argument (XDR *xdrs, multiplicacion_1_argument *objp)
-{
-	 if (!xdr_double (xdrs, &objp->arg1))
+	 if (!xdr_int (xdrs, &objp->error))
 		 return FALSE;
-	 if (!xdr_double (xdrs, &objp->arg2))
-		 return FALSE;
-	return TRUE;
-}
-
-bool_t
-xdr_division_1_argument (XDR *xdrs, division_1_argument *objp)
-{
-	 if (!xdr_double (xdrs, &objp->arg1))
-		 return FALSE;
-	 if (!xdr_double (xdrs, &objp->arg2))
-		 return FALSE;
+	switch (objp->error) {
+	case 0:
+		 if (!xdr_double (xdrs, &objp->response_u.result))
+			 return FALSE;
+		break;
+	default:
+		break;
+	}
 	return TRUE;
 }

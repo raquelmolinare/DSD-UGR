@@ -6,42 +6,50 @@
 
 #include "calculadora.h"
 
-double *
-suma_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
+response *
+suma_1_svc(operation arg1,  struct svc_req *rqstp)
 {
-	static double  result;
+	static response  result;
 
-	result = arg1 + arg2;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
-double *
-resta_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
+response *
+resta_1_svc(operation arg1,  struct svc_req *rqstp)
 {
-	static double  result;
+	static response  result;
 
-	result = arg1 - arg2;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
-double *
-multiplicacion_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
+response *
+multiplicacion_1_svc(operation arg1,  struct svc_req *rqstp)
 {
-	static double  result;
+	static response  result;
 
-	result = arg1 * arg2;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
 
-double *
-division_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
+response *
+division_1_svc(operation arg1,  struct svc_req *rqstp)
 {
-	static double  result;
+	static response  result;
 
-	result = arg1 / arg2;
+	/*
+	 * insert server code here
+	 */
 
 	return &result;
 }
