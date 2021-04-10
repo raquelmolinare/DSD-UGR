@@ -20,8 +20,8 @@ calculadoraprog_1(char *host)
 	responseBasic  *result_4;
 	operationBasic division_1_arg1;
 	responseVectores  *result_5;
-	vector  sumavectores_1_v1;
-	vector  sumavectores_1_v2;
+	vectorData  sumavectores_1_v1;
+	vectorData  sumavectores_1_v2;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, CALCULADORAPROG, CALCULADORAVERS, "udp");

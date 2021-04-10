@@ -55,7 +55,7 @@ division_1_svc(operationBasic arg1,  struct svc_req *rqstp)
 }
 
 responseVectores *
-sumavectores_1_svc(vector v1, vector v2,  struct svc_req *rqstp)
+sumavectores_1_svc(vectorData v1, vectorData v2,  struct svc_req *rqstp)
 {
 	static responseVectores  result;
 

@@ -40,19 +40,8 @@ xdr_vectorData (XDR *xdrs, vectorData *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_arrayVector (xdrs, objp))
-		 return FALSE;
-	return TRUE;
-}
-
-bool_t
-xdr_arrayVector (XDR *xdrs, arrayVector *objp)
-{
-	register int32_t *buf;
-
-	 if (!xdr_int (xdrs, &objp->vectorDim))
-		 return FALSE;
-	 if (!xdr_pointer (xdrs, (char **)&objp->vectorValues, sizeof (double), (xdrproc_t) xdr_double))
+	 if (!xdr_array (xdrs, (char **)&objp->vectorData_val, (u_int *) &objp->vectorData_len, ~0,
+		sizeof (double), (xdrproc_t) xdr_double))
 		 return FALSE;
 	return TRUE;
 }
@@ -78,9 +67,9 @@ xdr_responseVectores (XDR *xdrs, responseVectores *objp)
 bool_t
 xdr_sumavectores_1_argument (XDR *xdrs, sumavectores_1_argument *objp)
 {
-	 if (!xdr_vector (xdrs, &objp->v1))
+	 if (!xdr_vectorData (xdrs, &objp->v1))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, &objp->v2))
+	 if (!xdr_vectorData (xdrs, &objp->v2))
 		 return FALSE;
 	return TRUE;
 }

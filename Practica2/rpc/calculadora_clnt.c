@@ -70,7 +70,7 @@ division_1(operationBasic arg1,  CLIENT *clnt)
 }
 
 responseVectores *
-sumavectores_1(vector v1, vector v2,  CLIENT *clnt)
+sumavectores_1(vectorData v1, vectorData v2,  CLIENT *clnt)
 {
 	sumavectores_1_argument arg;
 	static responseVectores clnt_res;
