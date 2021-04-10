@@ -20,6 +20,8 @@ suma_1_svc(operation operands,  struct svc_req *rqstp)
 
 	calculationp = &result.response_u.result;
 
+	calculation = *calculationp;
+
 	calculation = operands.first + operands.second;
 
 	calculationp = &calculation;
