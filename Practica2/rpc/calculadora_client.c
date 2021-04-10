@@ -137,14 +137,14 @@ main (int argc, char *argv[])
 
 	printf("	1: adios\n");
 
-	printf(" len = %f\n", v1.vectorData_len);
+	printf(" len = %d\n", v1.vectorData_len);
 
 	v1.vectorData_len = 5.0;
 
-	printf(" len = %f\n", v1.vectorData_len);
+	printf(" len = %d\n", v1.vectorData_len);
 
 	for(int i = 0; i < v1.vectorData_len; i++){
-		scanf("%f",&v1.vectorData_val[i]);
+		scanf("%lf",&v1.vectorData_val[i]);
 	}
 	v1.vectorData_val = malloc(v1.vectorData_len*sizeof(double));
 
