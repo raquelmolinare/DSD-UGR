@@ -64,7 +64,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
     }
 
 	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->response_u.result);
+	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
