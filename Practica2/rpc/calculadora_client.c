@@ -22,7 +22,7 @@ calculadoraprog_1(char *host, double a, char operation, double b)
 #endif	/* DEBUG */
 
 	result = suma_1(a, b, clnt);
-	printf("El resultado de la operación %d %c %d =%d", a, operation, b, result);
+	printf("El resultado de la operación %f %c %f =%f", a, operation, b, result);
 	if (result == (double *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
@@ -64,7 +64,7 @@ main (int argc, char *argv[])
 	operation = argv[3];
 
 
-	calculadoraprog_1 (host);
+	calculadoraprog_1 (host,a,operation,b);
 
 
 exit (0);
