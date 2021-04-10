@@ -26,7 +26,7 @@ suma_1_svc(operation operands,  struct svc_req *rqstp)
 
 	calculationp = &calculation;
 
-	return &result;
+	return (&result);
 }
 
 response *
