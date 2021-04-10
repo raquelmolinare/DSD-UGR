@@ -13,9 +13,8 @@ union responseBasic switch (int error){
 };
 
 
-typedef struct s_vector vectorData; 
-
-struct s_vector{
+typedef struct array vectorData; 
+struct array{
 	int vectorDim;
 	double *vectorValues;
 };
