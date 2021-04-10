@@ -137,8 +137,12 @@ main (int argc, char *argv[])
 
 	printf("	1: adios\n");
 
+	printf(" len = %f\n", v1.vectorData_len);
 
 	v1.vectorData_len = 5;
+
+	printf(" len = %f\n", v1.vectorData_len);
+
 	for(int i = 0; i < v1.vectorData_len; i++){
 		scanf("%f",&v1.vectorData_val[i]);
 	}
