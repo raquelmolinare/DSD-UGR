@@ -10,9 +10,9 @@ xdr_operation (XDR *xdrs, operation *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_double (xdrs, &objp->a))
+	 if (!xdr_double (xdrs, &objp->first))
 		 return FALSE;
-	 if (!xdr_double (xdrs, &objp->b))
+	 if (!xdr_double (xdrs, &objp->second))
 		 return FALSE;
 	return TRUE;
 }
