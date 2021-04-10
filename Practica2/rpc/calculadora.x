@@ -12,14 +12,11 @@ union responseBasic switch (int error){
         void;
 };
  
-typedef struct arrayVector{
-	int vectorDim;
-	double *vectorValues;
-};
+typedef double vectorData<>;
 
 union responseVectores switch (int error){
     case 0:
-       arrayVector v;
+       vectorData v;
     default:
         void;
 };
@@ -31,7 +28,7 @@ program CALCULADORAPROG {
         responseBasic RESTA (operationBasic) = 2;
         responseBasic MULTIPLICACION (operationBasic) = 3;
         responseBasic DIVISION (operationBasic) = 4;
-        responseVectores SUMAVECTORES(vector v1, vector v2) = 5;
+        responseVectores SUMAVECTORES(vectorData v1, vectorData v2) = 5;
     } = 1;
 
 } = 0x20000001;
