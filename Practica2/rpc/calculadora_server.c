@@ -11,9 +11,7 @@ suma_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	/*
-	 * insert server code here
-	 */
+	result = arg1 + arg2;
 
 	return &result;
 }
@@ -23,9 +21,7 @@ resta_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	/*
-	 * insert server code here
-	 */
+	result = arg1 - arg2;
 
 	return &result;
 }
@@ -35,9 +31,7 @@ multiplicacion_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	/*
-	 * insert server code here
-	 */
+	result = arg1 * arg2;
 
 	return &result;
 }
@@ -47,9 +41,7 @@ division_1_svc(double arg1, double arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	/*
-	 * insert server code here
-	 */
+	result = arg1 / arg2;
 
 	return &result;
 }
