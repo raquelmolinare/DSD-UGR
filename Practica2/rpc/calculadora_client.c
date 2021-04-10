@@ -135,11 +135,17 @@ main (int argc, char *argv[])
 
 	vectorData v1, v2;
 
+	printf("	1: adios\n");
+
+
 	v1.vectorData_len = 5;
 	for(int i = 0; i < v1.vectorData_len; i++){
 		v1.vectorData_val[i] = 5.0;
 	}
 	v1.vectorData_val = malloc(v1.vectorData_len*sizeof(double));
+
+	printf("	2: adios\n");
+
 
 	v2.vectorData_len = 5;
 	for(int i = 0; i < v2.vectorData_len; i++){
