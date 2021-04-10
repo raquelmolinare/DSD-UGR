@@ -140,11 +140,11 @@ main (int argc, char *argv[])
 	printf(" len = %d\n", v1.vectorData_len);
 
 	v1.vectorData_len = 5.0;
-	v1.vectorData_val = malloc(v1.vectorData_len*sizeof(double));
+	v1.vectorData_val = malloc(5.0*sizeof(double));
 
 	printf(" len = %d\n", v1.vectorData_len);
 
-	for(int i = 0; i < v1.vectorData_len; i++){
+	for(int i = 0; i < 5; i++){
 		scanf("%lf",&v1.vectorData_val[i]);
 	}
 
