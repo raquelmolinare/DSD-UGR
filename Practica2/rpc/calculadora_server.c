@@ -227,7 +227,7 @@ prodescalar3d_1_svc(operationVectores operands,  struct svc_req *rqstp)
 	xdr_free(xdr_responseBasic, &result);
 	
 	//El puntero calculationp apunta a la direccion de memoria de result.response_u.result
-	calculationp = &result.responseBasic_u.result;
+	//calculationp = &result.responseBasic_u.result;
 
 	//Se calcula el resultado de la operacion
 	productoEscalar = (operands.first.vectorData_val[0]*operands.second.vectorData_val[0]) + (operands.first.vectorData_val[1]*operands.second.vectorData_val[1]) + (operands.first.vectorData_val[2]*operands.second.vectorData_val[2]);
@@ -236,7 +236,7 @@ prodescalar3d_1_svc(operationVectores operands,  struct svc_req *rqstp)
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
 	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = productoEscalar;
+	result.responseBasic_u.result = productoEscalar;
 
 	return &result;
 }
