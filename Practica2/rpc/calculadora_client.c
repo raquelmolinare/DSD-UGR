@@ -333,7 +333,7 @@ main (int argc, char *argv[])
 	
 	//Matrices
 	matrizData m1, m2;
-	calculadoraprog_matrices(host, m1, operation, m2);
+	//calculadoraprog_matrices(host, m1, operation, m2);
 	
 
 	

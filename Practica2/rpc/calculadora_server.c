@@ -270,9 +270,9 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 
 	//Vector b = third - second
 	vector3D b;
-	a.x= operands.third.x-operands.second.x;
-	a.y= operands.third.y-operands.second.y;
-	a.z= operands.third.z-operands.second.z;
+	b.x= operands.third.x-operands.second.x;
+	b.y= operands.third.y-operands.second.y;
+	b.z= operands.third.z-operands.second.z;
 
 	printf ("3: hola\n");
 
