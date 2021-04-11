@@ -289,8 +289,8 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 
 	int indice;
 	double suma;
-	
-	pprintf("filas: %d\n", f);rintf("columnas: %d\n", c);
+	printf("filas: %d\n", f);
+	printf("columnas: %d\n", c);
 
 
 	//Se calcula el resultado de la operacion de suma de matrices
