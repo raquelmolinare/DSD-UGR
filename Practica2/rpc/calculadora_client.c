@@ -296,8 +296,8 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
 	int indice, fil, col;
 	fil = result->responseMatrices_u.mResult.f;
 	col = result->responseMatrices_u.mResult.c;
-	printf("filas: %d\n", f);
-	printf("columnas: %d\n", c);
+	printf("filas: %d\n", fil);
+	printf("columnas: %d\n", col);
 	switch (operation)
     {
         case '+': //Suma
