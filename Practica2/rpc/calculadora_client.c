@@ -723,17 +723,17 @@ main (int argc, char *argv[])
 					}
 				}
 
-				printf("\tContenido de la segunda matriz (m1):\n");
-				m1.c=tam;
-				m1.f=tam;
-				m1.m.vectorData_len=tam*tam;
-				m1.m.vectorData_val=malloc(tam*tam*sizeof(double));
+				printf("\tContenido de la segunda matriz (m2):\n");
+				m2.c=tam;
+				m2.f=tam;
+				m2.m.vectorData_len=tam*tam;
+				m2.m.vectorData_val=malloc(tam*tam*sizeof(double));
 				
 				for(int i = 0; i < tam; i++){
 					//printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
 						printf("\t\tm1[%d][%d]: ",i,j);
-						scanf("%lf",&m1.m.vectorData_val[ (i*m1.c) + j]);
+						scanf("%lf",&m2.m.vectorData_val[ (i*m1.c) + j]);
 					}
 				}
 
