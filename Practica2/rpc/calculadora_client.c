@@ -366,10 +366,10 @@ main (int argc, char *argv[])
 
 		switch(menuPrincipal){
 			case 1: //Menu Operaciones basicas
-			printf("   ---------OPERACIONES BÁSICAS--------------");
-			printf("\t   Introduce una operacion <operabdo> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)");
-			scanf("%s",operacion);
-			printf("cadena = %s", operacion);
+			printf("   ---------OPERACIONES BÁSICAS--------------\n");
+			printf("\t   Introduce una operacion <operabdo> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
+			scanf("%s\n",operacion);
+			printf("cadena = %s\n", operacion);
 			break;
 				
 			case 2: //Menu vectores
