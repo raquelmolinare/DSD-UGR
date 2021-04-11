@@ -668,7 +668,7 @@ main (int argc, char *argv[])
 							printf("    ERROR: Opcion no valida\n");
 					}
 
-
+				}
 				/*
 				//Se pide la operacion
 				peticionValida=0;
