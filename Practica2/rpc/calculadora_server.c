@@ -302,7 +302,7 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 		for(int j = 0; j < c; j++){
 			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
 			indice = (i*c)+j;
-			suma = operands.first.m.vectorData_va[indice] + operands.second.m.vectorData_val[indice]
+			suma = operands.first.m.vectorData_val[indice] + operands.second.m.vectorData_val[indice];
 			result.responseMatrices_u.mResult.m.vectorData_val[indice] = suma;
 			printf("%f" , suma);
 			printf("hola\n") ;
