@@ -280,10 +280,7 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	int f = result.responseMatrices_u.mResult.f = operands.first.f;
 
 	//Se asigna al resultado en valor del leng que será el numero de filas*columas
-	//Puntero a la dimension del vector
-	int *dim;
-	dim = &result.responseMatrices_u.mResult.m.vectorData_len;
-	(*dim) = f*c;
+	result.responseMatrices_u.mResult.m.vectorData_len= f*c;
 
 	//Se redimensiona por tando el vector que compone la matriz
 	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
