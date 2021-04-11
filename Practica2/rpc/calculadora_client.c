@@ -496,7 +496,7 @@ main (int argc, char *argv[])
 				v1.vectorData_val = malloc(tam*sizeof(double));
 
 				for(int i = 0; i < v1.vectorData_len; i++){
-					printf("\tv1[%d]: \n",i);
+					printf("\tv1[%d]: ",i);
 					scanf("%lf",&v1.vectorData_val[i]);
 				}
 
@@ -505,7 +505,7 @@ main (int argc, char *argv[])
 				v2.vectorData_val = malloc(tam*sizeof(double));
 				
 				for(int i = 0; i < v2.vectorData_len; i++){
-					printf("\tv2[%d]: \n",i);
+					printf("\tv2[%d]: ",i);
 					scanf("%lf",&v2.vectorData_val[i]);
 				}
 
@@ -622,7 +622,7 @@ main (int argc, char *argv[])
 
 				subMenu = 0;
 				while( subMenu != 3){
-					printf("\n\t  Opciones disponibles:\n");
+					printf("\n\t  Opciones disponibles con v1 y v2:\n");
 					printf("\t    1: Producto escalar\n");
 					printf("\t    2: Producto vectorial\n");
 					printf("\t    3: Salir\n");
