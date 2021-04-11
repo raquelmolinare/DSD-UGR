@@ -207,7 +207,7 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
 
 	switch (operation)
     {
-        case '·': //Producto escalar
+        case '*': //Producto escalar
             resultProdEscalar = prodescalar3d_1(operands, clnt);
 			if (resultProdEscalar == (responseBasic *) NULL) {
 				clnt_perror (clnt, "call failed");
@@ -632,13 +632,13 @@ main (int argc, char *argv[])
 					switch(subMenu){
 						case 1: //Producto escalar
 
-						operation = '·';
+						operation = '*';
 						
 						//Resultado
 						printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 						printf(AZUL_T" El resultado de la operación "AMARILLO_T);
 
-						printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+						printf("\n\t(%f, %f, %f,) · (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,v3D2.x,v3D2.y,v3D2.z);
 						printf( AZUL_T" = "RESET_COLOR);
 						
 						//Realizar peticion al servidor y Mostrar resultado
