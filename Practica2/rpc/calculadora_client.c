@@ -365,27 +365,55 @@ main (int argc, char *argv[])
 		printf("  4: Operaciones con matrices\n");
 		printf("  5: Salir \n");
 
-		printf("Introducce una opción:");
+		printf("--Introducce una opción: ");
 		scanf("%d",&menuPrincipal);
 
 		switch(menuPrincipal){
 			case 1: //Menu Operaciones basicas
-			printf("   ----OPERACIÓN BÁSICA----\n");
-			//printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
+				printf("   ----OPERACIÓN BÁSICA----\n");
+				//printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
 
-			//Obtener los operandos y la operacion
-			printf("   Introduce la operacion '+' '-' '*' '/' 'log' '^':");
-			scanf("%s",peticion);
+				//Obtener los operandos y la operacion
+				printf("   Introduce la operacion '+' '-' '*' '/' 'log' '^': ");
+				scanf("%s",peticion);
 
-			printf("   Introduce el primer operando:");
-			scanf("%lf",&a);
+				printf("   Introduce el primer operando: ");
+				scanf("%lf",&a);
 
-			printf("   Introduce el segundo operando:");
-			scanf("%lf",&b);
+				printf("   Introduce el segundo operando: ");
+				scanf("%lf",&b);
 
-			printf(" PETICION: %f %s %f", a , peticion, b);
+				printf(" PETICION: %f %s %f", a , peticion, b);
 
-			break;
+				if( strcmp(peticion, "+") ){
+					printf("\n(es suma)\n");
+					operation='+';
+				}
+				else if(strcmp(peticion, "-")){
+					printf("\n(es resta)\n");
+					operation='-';
+				}
+				else if(strcmp(peticion, "*")){
+					printf("\n(es mult)\n");
+					operation='*';
+				}
+				else if(strcmp(peticion, "/")){
+					printf("\n(es div)\n");
+					operation='/';
+				}
+				else if(strcmp(peticion, "log")){
+					printf("\n(es log)\n");
+					operation='l';
+				}
+				else if(strcmp(peticion, "^")){
+					printf("\n(es pot)\n");
+					operation='^';
+				}
+
+				//Realizar peticion al servidor y Mostrar resultado
+				calculadoraprog_basicas (host,a,operation,b);
+
+				break;
 				
 			case 2: //Menu vectores
 			break;
