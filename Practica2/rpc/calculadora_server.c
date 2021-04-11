@@ -5,6 +5,7 @@
  */
 
 #include "calculadora.h"
+#include <math.h>
 
 responseBasic *
 suma_1_svc(operationBasic operands,  struct svc_req *rqstp)
