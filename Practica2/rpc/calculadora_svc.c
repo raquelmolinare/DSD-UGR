@@ -82,6 +82,18 @@ _sumamatrices_1 (operationMatrices  *argp, struct svc_req *rqstp)
 	return (sumamatrices_1_svc(*argp, rqstp));
 }
 
+static responseMatrices *
+_restamatrices_1 (operationMatrices  *argp, struct svc_req *rqstp)
+{
+	return (restamatrices_1_svc(*argp, rqstp));
+}
+
+static responseMatrices *
+_productomatrices_1 (operationMatrices  *argp, struct svc_req *rqstp)
+{
+	return (productomatrices_1_svc(*argp, rqstp));
+}
+
 static void
 calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
@@ -97,6 +109,8 @@ calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		operationVectores3D prodescalar3d_1_arg;
 		operationVectores3D prodvectorial3d_1_arg;
 		operationMatrices sumamatrices_1_arg;
+		operationMatrices restamatrices_1_arg;
+		operationMatrices productomatrices_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -171,6 +185,18 @@ calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		_xdr_argument = (xdrproc_t) xdr_operationMatrices;
 		_xdr_result = (xdrproc_t) xdr_responseMatrices;
 		local = (char *(*)(char *, struct svc_req *)) _sumamatrices_1;
+		break;
+
+	case RESTAMATRICES:
+		_xdr_argument = (xdrproc_t) xdr_operationMatrices;
+		_xdr_result = (xdrproc_t) xdr_responseMatrices;
+		local = (char *(*)(char *, struct svc_req *)) _restamatrices_1;
+		break;
+
+	case PRODUCTOMATRICES:
+		_xdr_argument = (xdrproc_t) xdr_operationMatrices;
+		_xdr_result = (xdrproc_t) xdr_responseMatrices;
+		local = (char *(*)(char *, struct svc_req *)) _productomatrices_1;
 		break;
 
 	default:
