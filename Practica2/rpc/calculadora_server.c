@@ -274,10 +274,12 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	xdr_free(xdr_responseMatrices, &result);
 
 	//Se asigna al resultado en valor de las columnas
-	int c = result.responseMatrices_u.mResult.c = operands.first.c;
+	int c = operands.first.c;
+	result.responseMatrices_u.mResult.c = c;
 
 	//Se asigna al resultado en valor de las filas
-	int f = result.responseMatrices_u.mResult.f = operands.first.f;
+	int f = operands.first.f;
+	result.responseMatrices_u.mResult.f = f;
 
 	//Se asigna al resultado en valor del leng que será el numero de filas*columas
 	result.responseMatrices_u.mResult.m.vectorData_len= f*c;

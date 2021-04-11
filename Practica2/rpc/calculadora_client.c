@@ -796,7 +796,7 @@ main (int argc, char *argv[])
 								}
 							}
 
-							printf("\n\t%c\n\t",operation);
+							printf("\n\t\t%c",operation);
 
 							for(int i = 0; i < m2.f; i++){
 								printf("\n\t");
@@ -804,7 +804,7 @@ main (int argc, char *argv[])
 									printf("%f ", m2.m.vectorData_val[(i*m2.c)+j]);
 								}
 							}
-							
+
 							printf( "\n\t"AZUL_T"= "RESET_COLOR);
 										
 							//Realizar peticion al servidor y Mostrar resultado
