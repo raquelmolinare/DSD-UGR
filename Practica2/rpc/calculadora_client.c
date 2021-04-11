@@ -101,7 +101,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
 
 	//Se muestra el resultado
 	//printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
-	printf(ROJO_T"%f"RESET_COLOR"\n", result->responseBasic_u.result);
+	printf("%f", result->responseBasic_u.result);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
@@ -457,7 +457,7 @@ main (int argc, char *argv[])
 						scanf("%lf",&b);
 					}
 
-					printf( ROJO_T" El resultado de la operación"AZUL_T"%f %s %f"ROJO_T"= "RESET_COLOR, a , peticion, b);
+					printf( AZUL_T" El resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
 				}
