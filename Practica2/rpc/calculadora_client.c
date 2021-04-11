@@ -755,6 +755,9 @@ main (int argc, char *argv[])
 				}
 				printf("\n");
 
+				calculadoraprog_matrices(host, m1, operation, m2);
+
+
 				/*
 				subMenu = 0;
 				while( subMenu != 3){

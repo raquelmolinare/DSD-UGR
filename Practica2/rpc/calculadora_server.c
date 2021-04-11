@@ -294,13 +294,18 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	m1 = &operands.first.m.vectorData_val;
 	m2 = &operands.second.m.vectorData_val;
 
+	double **resultado;
+	resultado = &result.responseMatrices_u.mResult.m.vectorData_val;
+
 
 	//Se calcula el resultado de la operacion de suma de matrices
 	for(int i = 0; i < f; i++){
 		for(int j = 0; j < c; j++){
 			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
 			// indice = (i*c)+j
-			//result.responseMatrices_u.mResult.m.vectorData_val[(i*c)+j] = (*m1+(i*c)+j) + (*m2+(i*c)+j);
+			resultado[(i*c)+j] = *m1[(i*c)+j] + *m2[(i*c)+j];
+			printf("%f = %f + %f\n" , resultado[(i*c)+j], *m1[(i*c)+j]),*m2[(i*c)+j];
+
 		}
 	}
 
