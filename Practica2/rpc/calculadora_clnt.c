@@ -130,13 +130,13 @@ restavectores_1(operationVectores arg1,  CLIENT *clnt)
 }
 
 responseBasic *
-prodescalar3d_1(operationVectores3D arg1,  CLIENT *clnt)
+prodescalar3d_1(operationVectores arg1,  CLIENT *clnt)
 {
 	static responseBasic clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, PRODESCALAR3D,
-		(xdrproc_t) xdr_operationVectores3D, (caddr_t) &arg1,
+		(xdrproc_t) xdr_operationVectores, (caddr_t) &arg1,
 		(xdrproc_t) xdr_responseBasic, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
