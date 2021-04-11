@@ -270,9 +270,39 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 {
 	static responseMatrices  result;
 
-	/*
-	 * insert server code here
-	 */
+	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
+	xdr_free(xdr_responseMatrices, &result);
+
+	//Se asigna al resultado en valor de las columnas
+	int c = result.responseMatrices_u.mResult.c = operands.first.c;
+
+	//Se asigna al resultado en valor de las filas
+	int f = result.responseMatrices_u.mResult.f = operands.first.f;
+
+	//Se asigna al resultado en valor del leng que será el numero de filas*columas
+	//Puntero a la dimension del vector
+	int *dim;
+	dim = &result.responseMatrices_u.mResult.m.vectorData_len;
+	*dim = f*c;
+
+	//Se redimensiona por tando el vector que compone la matriz
+	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
+
+	//Se toman punteros a los valores de las matrices que forman los operandos por facilidad
+	double *m1;
+	double *m2;
+	m1 = &operands.first.m.vectorData_val;
+	m2 = &operands.second.m.vectorData_val;
+
+
+	//Se calcula el resultado de la operacion de suma de matrices
+	for(int i = 0; i < f; i++){
+		for(int j = 0; j < c; j++){
+			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
+			// indice = (i*c)+j
+			//result.responseMatrices_u.mResult.m.vectorData_val[(i*c)+j] = (*m1+(i*c)+j) + (*m2+(i*c)+j);
+		}
+	}
 
 	return &result;
 }
