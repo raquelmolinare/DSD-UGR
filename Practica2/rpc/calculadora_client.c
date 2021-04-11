@@ -716,9 +716,9 @@ main (int argc, char *argv[])
 				m1.m.vectorData_val=malloc(tam*tam*sizeof(double));
 				
 				for(int i = 0; i < tam; i++){
-					printf("\tFila %d: ",i);
+					//printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
-						printf("\t\tm1[%d][%d]: ",i,j);
+						printf("\tm1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[(i*m1.c) + j]);
 					}
 				}
@@ -730,9 +730,9 @@ main (int argc, char *argv[])
 				m1.m.vectorData_val=malloc(tam*tam*sizeof(double));
 				
 				for(int i = 0; i < tam; i++){
-					printf("\tFila %d: ",i);
+					//printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
-						printf(" m1[%d][%d]: ",i,j);
+						printf("\tm1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[ (i*m1.c) + j]);
 					}
 				}
@@ -740,7 +740,7 @@ main (int argc, char *argv[])
 				printf("\tContenido de la primera matriz (m1):\n");
 				for(int i = 0; i < m1.f; i++){
 					for(int j = 0; j < m1.c; j++){
-						printf("%f ",i,j, m1.m.vectorData_val[(i*m1.c)+j]);
+						printf("%f ", m1.m.vectorData_val[(i*m1.c)+j]);
 					}
 					printf("\n");
 				}
