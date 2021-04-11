@@ -77,6 +77,9 @@ program CALCULADORAPROG {
         responseBasic PRODESCALAR3D(operationVectores3D) = 9;
         responseVectores PRODVECTORIAL3D(operationVectores3D) = 10;
         responseMatrices SUMAMATRICES(operationMatrices) = 11;
+        responseMatrices RESTAMATRICES(operationMatrices) = 12;
+        responseMatrices PRODUCTOMATRICES(operationMatrices) = 13;
+
     } = 1;
 
 } = 0x20000001;
