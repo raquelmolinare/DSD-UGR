@@ -296,7 +296,8 @@ main (int argc, char *argv[])
 	v1.vectorData_val = malloc(5*sizeof(double));
 
 	for(int i = 0; i < v1.vectorData_len; i++){
-		scanf("%lf",&v1.vectorData_val[i]);
+		v1.vectorData_val[i] = 1.0;
+		//scanf("%lf",&v1.vectorData_val[i]);
 	}
 
 	printf("	2: adios\n");
