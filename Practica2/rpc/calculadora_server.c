@@ -364,19 +364,23 @@ productomatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	//Se redimensiona por tando el vector que compone la matriz
 	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
 
-	int indice;
-	double suma;
-
+	int indice,ind_a,ind_b;
+	double producto;
+	double sumaProd;
 
 	//Se calcula el resultado de la operacion de producto de matrices
-	for(int i = 0; i < f; i++){
-		for(int j = 0; j < c; j++){
-			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
-			indice = (i*c)+j;
-			suma = operands.first.m.vectorData_val[indice] + operands.second.m.vectorData_val[indice];
-			result.responseMatrices_u.mResult.m.vectorData_val[indice] = suma;
+	for (int i=0; i<c; i++){
+		for (int j=0; j<c; j++){
+			sumaProd = 0;
+			for (int k=0; k<c; k++){
+				indice = (i*c)+j; //equivalente a lo que sería [i][j]
+				ind_a = (i*c)+k; //equivalente a lo que sería [i][k]
+				ind_b = (k*c)+j; //equivalente a lo que sería [k][j]
+				sumaProd += operands.first.m.vectorData_val[ind_a] * operands.second.m.vectorData_val[ind_b];
+				result.responseMatrices_u.mResult.m.vectorData_val[indice] = sumaProd;
+			}
 		}
 	}
-
+	
 	return &result;
 }

@@ -242,10 +242,8 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
             break;
 
         case 'x': //Producto vectorial
-           	//printf("El resultado de restar los vectores es: ");
-			
 			printf(MAGENTA_T"(%f,"RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[0]);
-			printf(MAGENTA_T"( %f,"RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[1]);
+			printf(MAGENTA_T" %f,"RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[1]);
 			printf(MAGENTA_T" %f) "RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[2]);
 			//for(int i = 0; i < resultProdVectorial->responseVectores_u.vResult.vectorData_len; i++){
 			//	printf(MAGENTA_T"%f  "RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[i]);
