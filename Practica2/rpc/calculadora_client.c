@@ -464,11 +464,11 @@ main (int argc, char *argv[])
 						scanf("%lf",&b);
 					}
 
-					printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-					printf( AZUL_T"\nEl resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
+					printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+					printf( AZUL_T"  El resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
-					printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+					printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 
 
 				}
@@ -549,7 +549,7 @@ main (int argc, char *argv[])
 			break;
 
 			case 3: //Menu Vectores3D
-				printf("   ----OPERACIÓN CON VECTORES 3D----");
+				printf("   ----OPERACIÓN CON VECTORES 3D----\n");
 
 				//Obtener los operandos y la operacion
 
@@ -593,236 +593,16 @@ main (int argc, char *argv[])
 				}while(peticionValida == 0);
 
 				//Resultado
-				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 				printf(AZUL_T" El resultado de la operación "AMARILLO_T);
 
-				printf("(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+				printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
 				printf( AZUL_T" = "RESET_COLOR);
 				
 				//Realizar peticion al servidor y Mostrar resultado
-				calculadoraprog_vectores(host, v1, operation, v2);
-				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				calculadoraprog_vectores3D(host, v3D1, operation, v3D2);
+				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 				
-				/*int menuPiezas=0;
-				while( menuPiezas != 11){
-					printf("\t\n    Opciones Gestion de piezas:");
-					printf("\t   1: Dar de alta una pieza");
-					printf("\t   2: Consultar una pieza");
-					printf("\t   3: Modificar una pieza");
-					printf("\t   4: Dar de baja una pieza");
-					printf("\t   5: Crear un pedido de Exportacion");
-					printf("\t   6: Crear un pedido de Importacion");
-					printf("\t   7: Consultar un pedido");
-					printf("\t   8: Consultar todas las compras de piezas");
-					printf("\t   9: Consultar todas las ventas de piezas");
-					printf("\t   10: Eliminar un pedido");
-					printf("\t   11: Atras\n");
-					
-					menuPiezas = scanner.nextInt();
-
-					//Gestion piezas y pedidos
-					String CPieza,nombrePieza; int cantPieza; String pcompraPieza, pventaPieza;
-					int CPedido; String NIFExpPedido , NIFImpPedido; String precioPedido;
-					String salidaGestPie;
-
-					switch(menuPiezas){
-						case 1:
-							printf("\t------Alta de Pieza------");
-							printf("\tCodigo:");
-							CPieza = scanner.next();
-							printf("\n\tNombre:");
-							nombrePieza = scanner.next();
-							printf("\n\tCantidad:");
-							cantPieza = scanner.nextInt();
-							printf("\n\tPrecio Compra (formato nn.nn):");
-							pcompraPieza = scanner.next();
-							printf("\n\tPrecio Venta (formato nn.nn):");
-							pventaPieza = scanner.next();
-							
-							gestPiezas.insertarPieza(CPieza, nombrePieza, cantPieza, pcompraPieza, pventaPieza);
-							
-							con.commit();
-							break;
-						
-						case 2:
-							printf("\t------Consulta Pieza------");
-							printf("\tIntroduce el codigo de la pieza:");
-							CPieza = scanner.next();
-							salidaGestPie = gestPiezas.consultarPieza(CPieza);
-							if(salidaGestPie == ""){
-								printf("\tNo existe ninguna pieza con ese código");
-							}
-							else{
-								printf("\t"+salidaGestPie);
-							}
-							
-							
-							break;
-						
-						case 3:
-							printf("\t------Modificar Pieza------");
-							printf("\tIntroduce el codigo de la pieza:");
-							CPieza = scanner.next();
-							Savepoint sp = con.setSavepoint("spModificarPieza");
-							String nuevoNombre; int nuevaCant; String nuevoPcompra, nuevoPventa; 
-							int menuModificarPieza=0;
-							while(menuModificarPieza!=5 && menuModificarPieza!=6){
-								printf("\t\tOpciones Modificar Pieza:");
-								printf("\t\t  1: Modificar nombre");
-								printf("\t\t  2: Modificar cantidad");
-								printf("\t\t  3: Modificar precio compra");
-								printf("\t\t  4: Modificar precio venta");
-								printf("\t\t  5: Cancelar modificaciones");
-								printf("\t\t  6: Guardar modificaciones");
-
-								menuModificarPieza = scanner.nextInt();
-
-								switch(menuModificarPieza){
-									case 1:
-										printf("\t\tNuevo nombre:");
-										nuevoNombre = scanner.next();
-										
-										gestPiezas.modificarNombrePieza(CPieza, nuevoNombre);
-										
-										break;
-
-									case 2:
-										printf("\n\t\tNueva cantidad:");
-										nuevaCant = scanner.nextInt();
-										
-										gestPiezas.modificarCantidadPieza(CPieza, nuevaCant);
-										
-										break;
-									case 3:
-										printf("\n\t\tNuevo Precio Compra:");
-										nuevoPcompra = scanner.next();
-										
-										gestPiezas.modificarPrecioCompraPieza(CPieza, nuevoPcompra);
-										
-										break;
-									case 4:
-										printf("\n\t\tNuevo Precio Venta:");
-										nuevoPventa = scanner.next();
-										
-										gestPiezas.modificarPrecioVentaPieza(CPieza, nuevoPventa);
-										
-										break;
-									case 5:
-										con.rollback(sp);
-										break;
-									case 6:
-										con.commit();
-										break;
-
-								}
-							}
-							break;
-
-						case 4:
-							printf("\t------Dar de baja una Pieza------");
-							printf("\tIntroduce el codigo de la pieza:");
-							CPieza = scanner.next();
-							
-							//Se borra la pieza con CPieza tanto de Pieza como de Contiene
-							//y se borra el pedido que iba asociado a esa pieza
-							gestPiezas.borrarPieza(CPieza);
-
-							con.commit();
-							break;
-						
-						case 5:
-							printf("\t------Crear un pedido de Exportacion------");
-							printf("\tIntroduce el codigo de la pieza:");
-							CPieza = scanner.next();
-							CPedido = gestPiezas.generacionAutomaticaCodigoPedido();
-							
-							printf("\n\tNIF empresa Importadora:");
-							NIFImpPedido = scanner.next();
-							
-							printf("\n\tCantidad de piezas:");
-							cantPieza = scanner.nextInt();
-							boolean resultExport;                    
-							resultExport = gestPiezas.crearPedidoExportacion(CPieza, NIFImpPedido, cantPieza); 
-							
-							if(!resultExport)
-								printf("\tINCORRECTO.Pieza o empresa no existen o la cantidad no es válida");
-							else
-								printf("\tPedido creado de forma correcta");
-							
-							con.commit();
-							break;
-
-						case 6:
-							printf("\t------Crear un pedido de Importacion------");
-							printf("\tIntroduce el codigo de la pieza:");
-							CPieza = scanner.next();
-							//CPedido = gestPiezas.generacionAutomaticaCodigoPedido();
-							
-							printf("\n\tNIF empresa Exportadora:");
-							NIFExpPedido = scanner.next();
-
-							printf("\n\tCantidad de piezas:");
-							cantPieza = scanner.nextInt();
-												
-							gestPiezas.crearPedidoImportacion(CPieza, NIFExpPedido, cantPieza); 
-							
-							con.commit();
-							break;
-
-						case 7:
-							printf("\t------Consulta un pedido------");
-							printf("\tIntroduce el codigo del pedido:");
-							CPedido = scanner.nextInt();
-							
-							salidaGestPie = gestPiezas.consultarPedido(CPedido);
-							if(salidaGestPie == ""){
-								printf("\tNo existe ningun pedido con ese código");
-							}
-							else{
-								printf("\t"+salidaGestPie);
-							}
-							break;
-
-						case 8:
-							printf("\t------Consulta compras realizadas------");
-							salidaGestPie = gestPiezas.consultarCompras();
-							if(salidaGestPie == ""){
-								printf("\tNo se ha realizado ninguna compra");
-							}
-							else{
-								printf(salidaGestPie);
-							}
-							break;
-
-						case 9:
-							printf("\t------Consulta ventas realizadas------");
-							salidaGestPie = gestPiezas.consultarVentas();
-							if(salidaGestPie == ""){
-								printf("\tNo se ha realizado ninguna venta");
-							}
-							else{
-								printf(salidaGestPie);
-							}
-							break;
-			
-						case 10:
-							printf("\t------Eliminar un pedido------ ");
-							printf("\tIntroduce el codigo del pedido:");
-							CPedido = scanner.nextInt();
-							
-							//Se borra el pedido con CPedido tanto de Pedido como de Contiene
-							gestPiezas.borrarPedido(CPedido);
-							con.commit();
-							break;
-
-						case 11:
-							// Exit
-							printf("Volviendo al Menu principal...\n");
-							break;
-						default:
-						printf("ERROR: Opcion no valida\n");
-					}
-				}*/
 			break;
 
 			case 4: //Menu Matrices
