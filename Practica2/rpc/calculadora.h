@@ -58,7 +58,6 @@ typedef struct vector3D vector3D;
 struct operationVectores3D {
 	vector3D first;
 	vector3D second;
-	vector3D third;
 };
 typedef struct operationVectores3D operationVectores3D;
 
@@ -114,8 +113,8 @@ extern  responseVectores * sumavectores_1_svc(operationVectores , struct svc_req
 extern  responseVectores * restavectores_1(operationVectores , CLIENT *);
 extern  responseVectores * restavectores_1_svc(operationVectores , struct svc_req *);
 #define PRODESCALAR3D 9
-extern  responseBasic * prodescalar3d_1(operationVectores , CLIENT *);
-extern  responseBasic * prodescalar3d_1_svc(operationVectores , struct svc_req *);
+extern  responseBasic * prodescalar3d_1(operationVectores3D , CLIENT *);
+extern  responseBasic * prodescalar3d_1_svc(operationVectores3D , struct svc_req *);
 #define PRODVECTORIAL3D 10
 extern  responseVectores * prodvectorial3d_1(operationVectores3D , CLIENT *);
 extern  responseVectores * prodvectorial3d_1_svc(operationVectores3D , struct svc_req *);
