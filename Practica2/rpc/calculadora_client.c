@@ -385,6 +385,8 @@ main (int argc, char *argv[])
 
 	int peticionValida=1;
 
+	int subMenu=0;
+
 	int menuPrincipal=0;
 	while( menuPrincipal != 5){
 		printf("\nOpciones disponibles:\n");
@@ -505,7 +507,71 @@ main (int argc, char *argv[])
 					scanf("%lf",&v2.vectorData_val[i]);
 				}
 
-				//Se pide la operacion
+				subMenu = 0;
+				while( subMenu != 3){
+					printf("\n  Opciones disponibles:\n");
+					printf("    1: Suma\n");
+					printf("    2: Resta\n");
+					printf("  	3: Salir\n");
+					printf("\n    --Introducce una opción: ");
+					scanf("%d",&subMenu);
+
+					switch(subMenu){
+						case 1: //suma
+
+							operation='+';
+
+							//Resultado
+							printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							printf( ""AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+							for(int i = 0; i < v1.vectorData_len; i++){
+								printf("%lf ",v1.vectorData_val[i]);
+							}
+							printf("\n\t%c\n\t",operation);
+							for(int i = 0; i < v2.vectorData_len; i++){
+								printf("%lf ",v2.vectorData_val[i]);
+							}
+							printf( "\n\t"AZUL_T"= "RESET_COLOR);
+										
+							//Realizar peticion al servidor y Mostrar resultado
+							calculadoraprog_vectores(host, v1, operation, v2);
+
+							printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							break;
+							
+						case 2: //Resta	
+
+							operation='-';
+
+							//Resultado
+							printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							printf( ""AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+							for(int i = 0; i < v1.vectorData_len; i++){
+								printf("%lf ",v1.vectorData_val[i]);
+							}
+							printf("\n\t%c\n\t",operation);
+							for(int i = 0; i < v2.vectorData_len; i++){
+								printf("%lf ",v2.vectorData_val[i]);
+							}
+							printf( "\n\t"AZUL_T"= "RESET_COLOR);
+										
+							//Realizar peticion al servidor y Mostrar resultado
+							calculadoraprog_vectores(host, v1, operation, v2);
+
+							printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							break;
+
+						case 3: //Salir
+							// Exit
+							break;
+						default:
+							printf("    ERROR: Opcion no valida\n");
+					}
+				}
+
+
+				/*
+				//Se piden las operaciones
 				peticionValida=0;
 				do{
 					printf("   Introduce la operacion '+' o '-': ");
@@ -528,25 +594,7 @@ main (int argc, char *argv[])
 
 				}while(peticionValida == 0);
 
-				//Resultado
-				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-				printf( ""AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
-				for(int i = 0; i < v1.vectorData_len; i++){
-					printf("%lf ",v1.vectorData_val[i]);
-				}
-				printf("\n\t%c\n\t",operation);
-				for(int i = 0; i < v2.vectorData_len; i++){
-					printf("%lf ",v2.vectorData_val[i]);
-				}
-				printf( "\n\t"AZUL_T"= "RESET_COLOR);
-							
-				//Realizar peticion al servidor y Mostrar resultado
-				calculadoraprog_vectores(host, v1, operation, v2);
-
-				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-
-				break;
-
+				*/
 			break;
 
 			case 3: //Menu Vectores3D
@@ -570,6 +618,58 @@ main (int argc, char *argv[])
 				printf("      z:");
 				scanf("%lf",&v3D2.z);
 
+				subMenu = 0;
+				while( subMenu != 3){
+					printf("\n  Opciones disponibles:\n");
+					printf("    1: Producto escalar\n");
+					printf("    2: Producto vectorial\n");
+					printf("  	3: Salir\n");
+					printf("\n    --Introducce una opción: ");
+					scanf("%d",&subMenu);
+
+					switch(subMenu){
+						case 1: //Producto escalar
+
+						operation = '*';
+						
+						//Resultado
+						printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+						printf(AZUL_T" El resultado de la operación "AMARILLO_T);
+
+						printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+						printf( AZUL_T" = "RESET_COLOR);
+						
+						//Realizar peticion al servidor y Mostrar resultado
+						calculadoraprog_vectores3D(host, v3D1, operation, v3D2);
+						printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							break;
+							
+						case 2: //Producto vectorial
+							
+							operation = 'x';
+
+							//Resultado
+							printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							printf(AZUL_T" El resultado de la operación "AMARILLO_T);
+
+							printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+							printf( AZUL_T" = "RESET_COLOR);
+							
+							//Realizar peticion al servidor y Mostrar resultado
+							calculadoraprog_vectores3D(host, v3D1, operation, v3D2);
+							printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+							break;
+
+						case 3: //Salir
+							// Exit
+							break;
+
+						default:
+							printf("    ERROR: Opcion no valida\n");
+					}
+
+
+				/*
 				//Se pide la operacion
 				peticionValida=0;
 				do{
@@ -592,18 +692,7 @@ main (int argc, char *argv[])
 					}
 
 				}while(peticionValida == 0);
-
-				//Resultado
-				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-				printf(AZUL_T" El resultado de la operación "AMARILLO_T);
-
-				printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
-				printf( AZUL_T" = "RESET_COLOR);
-				
-				//Realizar peticion al servidor y Mostrar resultado
-				calculadoraprog_vectores3D(host, v3D1, operation, v3D2);
-				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-				
+				*/				
 			break;
 
 			case 4: //Menu Matrices
