@@ -101,7 +101,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
 
 	//Se muestra el resultado
 	//printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
-	printf("%f", result->responseBasic_u.result);
+	printf(MAGENTA_T"%f"RESET_COLOR, result->responseBasic_u.result);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
@@ -157,16 +157,16 @@ calculadoraprog_vectores(char *host, vectorData v1, char operation, vectorData v
 	switch (operation)
     {
         case '+': //Suma
-            printf("El resultado de sumar los vectores es: ");
+            //printf("El resultado de sumar los vectores es: ");
 			for(int i = 0; i < result->responseVectores_u.vResult.vectorData_len; i++){
-				printf("%f  ", result->responseVectores_u.vResult.vectorData_val[i]);
+				printf(MAGENTA_T"%f  "RESET_COLOR, result->responseVectores_u.vResult.vectorData_val[i]);
 			}
             break;
 
         case '-'://Resta
-           	printf("El resultado de restar los vectores es: ");
+           	//printf("El resultado de restar los vectores es: ");
 			for(int i = 0; i < result->responseVectores_u.vResult.vectorData_len; i++){
-				printf("%f  ", result->responseVectores_u.vResult.vectorData_val[i]);
+				printf(MAGENTA_T"%f  "RESET_COLOR, result->responseVectores_u.vResult.vectorData_val[i]);
 			}
             break;
 		default:
@@ -229,13 +229,14 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
 	switch (operation)
     {
         case '*': //Producto escalar
-            printf("El resultado del producto escalar es %f",resultProdEscalar->responseBasic_u.result);
+            //printf("El resultado del producto escalar es %f",resultProdEscalar->responseBasic_u.result);
+			printf(MAGENTA_T"%f"RESET_COLOR, resultProdEscalar->responseBasic_u.result);
             break;
 
         case 'x': //Producto vectorial
-           	printf("El resultado de restar los vectores es: ");
+           	//printf("El resultado de restar los vectores es: ");
 			for(int i = 0; i < resultProdVectorial->responseVectores_u.vResult.vectorData_len; i++){
-				printf("%f  ", resultProdVectorial->responseVectores_u.vResult.vectorData_val[i]);
+				printf(MAGENTA_T"%f  "RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[i]);
 			}
             break;
 		default:
@@ -308,20 +309,30 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
 int
 main (int argc, char *argv[])
 {
-	//Declaracion de variables
-	char *host;
-	double a, b;
-	char operation;
-
-	char peticion[MAXIMA_LONGITUD_PETICION];
-
 	if (argc  != 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
 
-	//Se almacena la peticion
+	//Declaracion de variables
+	char *host;
 	host = argv[1];
+
+	char peticion[MAXIMA_LONGITUD_PETICION];
+	char operation;
+	
+	//Operaciones basicas
+	double a, b;
+
+	//Operaciones con Vectores
+	vectorData v1, v2;
+
+	//Operaciones con Vectores3D
+	vector3D v3D1, v3D2;
+
+	//Operaciones con Matrices
+	matrizData m1, m2;
+	
 	//a = atof(argv[2]);
 	//b = atof(argv[4]);
 	//operation = *argv[3];
@@ -331,9 +342,8 @@ main (int argc, char *argv[])
 	//calculadoraprog_basicas (host,a,operation,b);
 
 	//Vectores
-	vectorData v1, v2;
 
-	printf("	1: adios\n");
+	/*printf("	1: adios\n");
 
 	v1.vectorData_len = 5;
 	v1.vectorData_val = malloc(5*sizeof(double));
@@ -353,7 +363,7 @@ main (int argc, char *argv[])
 		v2.vectorData_val[i] = 5.0;
 	}
 
-	printf("	3: adios\n");
+	printf("	3: adios\n");*/
 
 
 	//calculadoraprog_vectores(host, v1, operation, v2);
@@ -468,10 +478,139 @@ main (int argc, char *argv[])
 				break;
 				
 			case 2: //Menu vectores
+				printf("   ----OPERACIÓN CON VECTORES----\n");
+
+				//Obtener los operandos y la operacion
+				printf("   Introduce el tamaño de los vectores: ");
+				int tam;
+				do{
+					scanf("%d",&tam);
+				}while(tam <= 0);
+
+				printf("   Contenido del primer vector:\n");
+				v1.vectorData_len = tam;
+				v1.vectorData_val = malloc(tam*sizeof(double));
+
+				for(int i = 0; i < v1.vectorData_len; i++){
+					scanf("%lf",&v1.vectorData_val[i]);
+				}
+
+				printf("   Contenido del segundo vector:\n");
+				v2.vectorData_len = tam;
+				v2.vectorData_val = malloc(tam*sizeof(double));
+				
+				for(int i = 0; i < v2.vectorData_len; i++){
+					scanf("%lf",&v2.vectorData_val[i]);
+				}
+
+				//Se pide la operacion
+				peticionValida=0;
+				do{
+					printf("   Introduce la operacion '+' o '-': ");
+					scanf("%s",peticion);
+
+					if( strcmp(peticion, "+") == 0 ){
+						printf("\n(es suma)\n");
+						operation='+';
+						peticionValida=1;
+					}
+					else if(strcmp(peticion, "-") == 0){
+						printf("\n(es resta)\n");
+						operation='-';
+						peticionValida=1;
+					}
+					else{
+						peticionValida=0;
+						printf(" NO ES CORRECTA LA OPERACION\n");
+					}
+
+				}while(peticionValida == 0);
+
+				//Resultado
+				printf( "\n"AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+				for(int i = 0; i < v1.vectorData_len; i++){
+					printf("%lf ",v1.vectorData_val[i]);
+				}
+				printf("\n\t%c\n\t",operation);
+				for(int i = 0; i < v2.vectorData_len; i++){
+					printf("%lf ",v2.vectorData_val[i]);
+				}
+				printf( "\n\t"AZUL_T" = "RESET_COLOR);
+				
+				//Realizar peticion al servidor y Mostrar resultado
+				calculadoraprog_vectores(host, v1, operation, v2);
+	
+				break;
+
 			break;
 
 			case 3: //Menu Vectores3D
 				printf("   ---------GESTION DE PIEZAS--------------");
+
+				/*
+				printf("   ----OPERACIÓN CON VECTORES----\n");
+
+				//Obtener los operandos y la operacion
+				printf("   Introduce el tamaño de los vectores: ");
+				int tam;
+				do{
+					scanf("%d",&tam);
+				}while(tam <= 0);
+
+				printf("   Contenido del primer vector:\n");
+				v1.vectorData_len = tam;
+				v1.vectorData_val = malloc(tam*sizeof(double));
+
+				for(int i = 0; i < v1.vectorData_len; i++){
+					scanf("%lf",&v1.vectorData_val[i]);
+				}
+
+				printf("   Contenido del segundo vector:\n");
+				v2.vectorData_len = tam;
+				v2.vectorData_val = malloc(tam*sizeof(double));
+				
+				for(int i = 0; i < v2.vectorData_len; i++){
+					scanf("%lf",&v2.vectorData_val[i]);
+				}
+
+				//Se pide la operacion
+				peticionValida=0;
+				do{
+					printf("   Introduce la operacion ( '*' -> producto escalar) ('x' -> producto vectorial): ");
+					scanf("%s",peticion);
+
+					if( strcmp(peticion, "*") == 0 ){
+						printf("\n(es producto escalar)\n");
+						operation='*';
+						peticionValida=1;
+					}
+					else if(strcmp(peticion, "x") == 0){
+						printf("\n(es producto vectorial)\n");
+						operation='x';
+						peticionValida=1;
+					}
+					else{
+						peticionValida=0;
+						printf(" NO ES CORRECTA LA OPERACION\n");
+					}
+
+				}while(peticionValida == 0);
+
+				//Resultado
+				printf( "\n"AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+				for(int i = 0; i < v1.vectorData_len; i++){
+					printf("%lf ",v1.vectorData_val[i]);
+				}
+				printf("\n\t%c\n\t",operation);
+				for(int i = 0; i < v2.vectorData_len; i++){
+					printf("%lf ",v2.vectorData_val[i]);
+				}
+				printf( "\n\t"AZUL_T" = "RESET_COLOR);
+				
+				//Realizar peticion al servidor y Mostrar resultado
+				calculadoraprog_vectores(host, v1, operation, v2);
+				*/
+
 				/*int menuPiezas=0;
 				while( menuPiezas != 11){
 					printf("\t\n    Opciones Gestion de piezas:");
