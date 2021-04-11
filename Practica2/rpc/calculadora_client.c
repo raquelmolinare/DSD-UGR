@@ -370,23 +370,19 @@ main (int argc, char *argv[])
 		switch(menuPrincipal){
 			case 1: //Menu Operaciones basicas
 			printf("   ----OPERACIÓN BÁSICA----\n");
-			printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
-			
-			//Se obtiene la operacion introducida por teclado
-			fgets(peticion, MAXIMA_LONGITUD_PETICION, stdin);
-
-			printf("PETICION 1 : %s\n",peticion);
-
-
-			//Quitar e salto de línea que se genera con fgets
-			if ((strlen(peticion) > 0) && (peticion[strlen(peticion) - 1] == '\n')){
-				peticion[strlen(peticion) - 1] = '\0';
-			}
-
-			printf("PETICION 2 : %s\n",peticion);
-
+			//printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
 
 			//Obtener los operandos y la operacion
+			printf("   Introduce la operacion '+' '-' '*' '/' 'log' '^':");
+			scanf("%s",peticion);
+
+			printf("   Introduce el primer operando:");
+			scanf("%f",&a);
+
+			printf("   Introduce el segundo operando:");
+			scanf("%f",&b);
+
+			printf(" PETICION: %f %s %f", a , peticion, b);
 
 			break;
 				
