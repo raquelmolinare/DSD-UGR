@@ -401,11 +401,11 @@ main (int argc, char *argv[])
 
 		switch(menuPrincipal){
 			case 1: //Menu Operaciones basicas
-				printf("   ----OPERACIÓN BÁSICA----\n");
+				printf("\n\t----OPERACIÓN BÁSICA----\n");
 				//printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
 
 				//Obtener los operandos y la operacion
-				printf("   Introduce la operacion '+' '-' '*' '/' 'log' '^': ");
+				printf("\tIntroduce la operacion '+' '-' '*' '/' 'log' '^': ");
 				scanf("%s",peticion);
 
 				if( strcmp(peticion, "+") == 0 ){
@@ -446,24 +446,24 @@ main (int argc, char *argv[])
 				if(peticionValida){
 
 					if( operation != 'l' && operation != '^'){
-						printf("   Introduce el primer operando: ");
+						printf("\tIntroduce el primer operando: ");
 						scanf("%lf",&a);
 
-						printf("   Introduce el segundo operando: ");
+						printf("\tIntroduce el segundo operando: ");
 						scanf("%lf",&b);
 					}
 					else if(operation == 'l')  {
-						printf("   Introduce el argumento: ");
+						printf("\tIntroduce el argumento: ");
 						scanf("%lf",&a);
 
-						printf("   Introduce la base: ");
+						printf("\tIntroduce la base: ");
 						scanf("%lf",&b);
 					}
 					else if(operation == '^')  {
-						printf("   Introduce la base: ");
+						printf("\tIntroduce la base: ");
 						scanf("%lf",&a);
 
-						printf("   Introduce el exponente: ");
+						printf("\tIntroduce el exponente: ");
 						scanf("%lf",&b);
 					}
 
@@ -476,44 +476,46 @@ main (int argc, char *argv[])
 
 				}
 				else{
-					printf(" NO ES CORRECTA LA PETICION\n");
+					printf("\tNO ES CORRECTA LA PETICION\n");
 				}	
 
 				break;
 				
 			case 2: //Menu vectores
-				printf("   ----OPERACIÓN CON VECTORES----\n");
+				printf("\n\t----OPERACIÓN CON VECTORES----\n");
 
 				//Obtener los operandos y la operacion
-				printf("   Introduce el tamaño de los vectores: ");
+				printf("\tIntroduce el tamaño de los vectores: ");
 				int tam;
 				do{
 					scanf("%d",&tam);
 				}while(tam <= 0);
 
-				printf("   Contenido del primer vector:\n");
+				printf("\tContenido del primer vector (v1):\n");
 				v1.vectorData_len = tam;
 				v1.vectorData_val = malloc(tam*sizeof(double));
 
 				for(int i = 0; i < v1.vectorData_len; i++){
+					printf("\tv1[%d]: \n",i);
 					scanf("%lf",&v1.vectorData_val[i]);
 				}
 
-				printf("   Contenido del segundo vector:\n");
+				printf("\tContenido del segundo vector (v2):\n");
 				v2.vectorData_len = tam;
 				v2.vectorData_val = malloc(tam*sizeof(double));
 				
 				for(int i = 0; i < v2.vectorData_len; i++){
+					printf("\tv2[%d]: \n",i);
 					scanf("%lf",&v2.vectorData_val[i]);
 				}
 
 				subMenu = 0;
 				while( subMenu != 3){
-					printf("\n  Opciones disponibles:\n");
-					printf("    1: Suma\n");
-					printf("    2: Resta\n");
-					printf("  	3: Salir\n");
-					printf("\n    --Introducce una opción: ");
+					printf("\n\tOpciones disponibles con v1 y v2:\n");
+					printf("\t    1: Suma\n");
+					printf("\t    2: Resta\n");
+					printf("\t    3: Salir\n");
+					printf("\n\t    --Introducce una opción: ");
 					scanf("%d",&subMenu);
 
 					switch(subMenu){
@@ -565,7 +567,7 @@ main (int argc, char *argv[])
 							// Exit
 							break;
 						default:
-							printf("    ERROR: Opcion no valida\n");
+							printf("\t    ERROR: Opcion no valida\n");
 					}
 				}
 
@@ -598,33 +600,33 @@ main (int argc, char *argv[])
 			break;
 
 			case 3: //Menu Vectores3D
-				printf("   ----OPERACIÓN CON VECTORES 3D----\n");
+				printf("\n\t----OPERACIÓN CON VECTORES 3D----\n");
 
 				//Obtener los operandos y la operacion
 
-				printf("   Contenido del primer vector:\n");
-				printf("      x:");
+				printf("\tContenido del primer vector (v1):\n");
+				printf("\t      x:");
 				scanf("%lf",&v3D1.x);
-				printf("      y:");
+				printf("\t      y:");
 				scanf("%lf",&v3D1.y);
-				printf("      z:");
+				printf("\t      z:");
 				scanf("%lf",&v3D1.z);
 				
-				printf("   Contenido del segundo vector:\n");
-				printf("      x:");
+				printf("\tContenido del segundo vector (v2):\n");
+				printf("\t      x:");
 				scanf("%lf",&v3D2.x);
-				printf("      y:");
+				printf("\t      y:");
 				scanf("%lf",&v3D2.y);
-				printf("      z:");
+				printf("\t      z:");
 				scanf("%lf",&v3D2.z);
 
 				subMenu = 0;
 				while( subMenu != 3){
-					printf("\n  Opciones disponibles:\n");
-					printf("    1: Producto escalar\n");
-					printf("    2: Producto vectorial\n");
-					printf("  	3: Salir\n");
-					printf("\n    --Introducce una opción: ");
+					printf("\n\t  Opciones disponibles:\n");
+					printf("\t    1: Producto escalar\n");
+					printf("\t    2: Producto vectorial\n");
+					printf("\t    3: Salir\n");
+					printf("\n\t    --Introducce una opción: ");
 					scanf("%d",&subMenu);
 
 					switch(subMenu){
@@ -665,7 +667,7 @@ main (int argc, char *argv[])
 							break;
 
 						default:
-							printf("    ERROR: Opcion no valida\n");
+							printf("\t    ERROR: Opcion no valida\n");
 					}
 
 				}
