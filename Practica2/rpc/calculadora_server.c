@@ -5,6 +5,7 @@
  */
 
 #include "calculadora.h"
+#include <stdio.h>
 #include <math.h>
 
 responseBasic *
