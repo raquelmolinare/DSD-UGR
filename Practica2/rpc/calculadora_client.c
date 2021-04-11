@@ -457,7 +457,7 @@ main (int argc, char *argv[])
 						scanf("%lf",&b);
 					}
 
-					printf( ROJO_T" El resultado de la operación"AZUL_T"%f %s %f"ROJO_T= "RESET_COLOR, a , peticion, b);
+					printf( ROJO_T" El resultado de la operación"AZUL_T"%f %s %f"ROJO_T"= "RESET_COLOR, a , peticion, b);
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
 				}
