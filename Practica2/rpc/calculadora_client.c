@@ -124,7 +124,7 @@ calculadoraprog_vectores(char *host, vectorData v1, vectorData v2,char operation
 			}
             break;
 		case '*'://Producto escalar
-           	resultProdEscalar = prodescalar3d_1_svc(operands, clnt);
+           	resultProdEscalar = prodescalar3d_1(operands, clnt);
 			if (resultProdEscalar == (responseVectores *) NULL) {
 				clnt_perror (clnt, "call failed");
 			}
