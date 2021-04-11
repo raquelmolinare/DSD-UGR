@@ -718,7 +718,7 @@ main (int argc, char *argv[])
 				for(int i = 0; i < tam; i++){
 					//printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
-						printf("\tm1[%d][%d]: ",i,j);
+						printf("\t\tm1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[(i*m1.c) + j]);
 					}
 				}
@@ -732,18 +732,28 @@ main (int argc, char *argv[])
 				for(int i = 0; i < tam; i++){
 					//printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
-						printf("\tm1[%d][%d]: ",i,j);
+						printf("\t\tm1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[ (i*m1.c) + j]);
 					}
 				}
 
 				printf("\tContenido de la primera matriz (m1):\n");
 				for(int i = 0; i < m1.f; i++){
+					printf("\n\t");
 					for(int j = 0; j < m1.c; j++){
 						printf("%f ", m1.m.vectorData_val[(i*m1.c)+j]);
 					}
-					printf("\n");
 				}
+				printf("\n");
+
+				printf("\tContenido de la segunda matriz (m2):\n");
+				for(int i = 0; i < m2.f; i++){
+					printf("\n\t");
+					for(int j = 0; j < m2.c; j++){
+						printf("%f ", m2.m.vectorData_val[(i*m2.c)+j]);
+					}
+				}
+				printf("\n");
 
 				/*
 				subMenu = 0;
