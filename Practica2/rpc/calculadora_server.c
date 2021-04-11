@@ -4,6 +4,12 @@
  * as a guideline for developing your own functions.
  */
 
+/**
+ *	Autor: Raquel Molina Reche
+ * 
+ *	Compilación:  gcc calculadora_server.c calculadora_svc.c calculadora_xdr.c -o servidor -lnsl -lm
+ */
+
 #include "calculadora.h"
 #include <stdio.h>
 #include <math.h>
@@ -123,7 +129,7 @@ logaritmo_1_svc(operationBasic operands,  struct svc_req *rqstp)
 	calculationp = &result.responseBasic_u.result;
 
 	//Se calcula el resultado de la operacion
-	calculation = log(operands.first) / log(operands.second);
+	calculation = log(operands.first) / log(operands.second); 
 
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion

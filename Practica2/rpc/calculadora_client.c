@@ -4,6 +4,12 @@
  * as a guideline for developing your own functions.
  */
 
+/**
+ *	Autor: Raquel Molina Reche
+ * 
+ *	Compilación:  gcc calculadora_client.c calculadora_clnt.c calculadora_xdr.c -o cliente -lnsl
+ */
+
 #include "calculadora.h"
 
 void
@@ -57,7 +63,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
 				clnt_perror (clnt, "call failed");
 			}
             break;
-		case 'l':
+		case 'log':
 			result = logaritmo_1(operands, clnt);
 			if (result == (responseBasic *) NULL) {
 				clnt_perror (clnt, "call failed");
@@ -87,7 +93,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
 }
 
 void
-calculadoraprog_vectores(char *host, vectorData v1, vectorData v2,char operation)
+calculadoraprog_vectores(char *host, vectorData v1, char operation, vectorData v2)
 {
 	CLIENT *clnt;
 	responseVectores  *result;
@@ -208,7 +214,7 @@ calculadoraprog_vectores3D(char *host, vector3D v1, vector3D v2, vector3D v3)
 
 
 void
-calculadoraprog_matrices(char *host, matrizData a, matrizData b, char operation)
+calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
 {
 	CLIENT *clnt;
 	responseMatrices  *result;
@@ -276,8 +282,11 @@ main (int argc, char *argv[])
 	b = atof(argv[4]);
 	operation = *argv[3];
 
+	//-------------------MENU---------------
+
 	calculadoraprog_basicas (host,a,operation,b);
 
+	//Vectores
 	vectorData v1, v2;
 
 	printf("	1: adios\n");
@@ -297,14 +306,31 @@ main (int argc, char *argv[])
 
 
 	v2.vectorData_len = 5;
-	v2.vectorData_val = malloc(v2.vectorData_len*sizeof(double));
+	v2.vectorData_val = malloc(5*sizeof(double));
 	
 	for(int i = 0; i < v2.vectorData_len; i++){
 		v2.vectorData_val[i] = 5.0;
 	}
+
+	calculadoraprog_vectores(host, v1, operation, v2);
+
+	//Vectores3D
+	vector3D v3D1, v3D2, v3D3;
+
+	v3D1.x = 1.0;
+	v3D1.y = 20.0;
+	v3D1.z = 3.0;
+	
+	calculadoraprog_vectores3D(host, v3D1, v3D2, v3D3);
+	
+	//Matrices
+	matrizData m1, m2;
+	calculadoraprog_matrices(host, m1, operation, m2);
 	
 
-	calculadoraprog_vectores (host,v1,v2,operation);
+	
+
+
 
 exit (0);
 }
