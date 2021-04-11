@@ -356,6 +356,8 @@ main (int argc, char *argv[])
 	matrizData m1, m2;
 	//calculadoraprog_matrices(host, m1, operation, m2);
 
+	int peticionValida=1;
+
 	int menuPrincipal=0;
 	while( menuPrincipal != 5){
 		printf("\nOpciones disponibles:\n");
@@ -365,7 +367,7 @@ main (int argc, char *argv[])
 		printf("  4: Operaciones con matrices\n");
 		printf("  5: Salir \n");
 
-		printf("--Introducce una opción: ");
+		printf("\n--Introducce una opción: ");
 		scanf("%d",&menuPrincipal);
 
 		switch(menuPrincipal){
@@ -377,41 +379,74 @@ main (int argc, char *argv[])
 				printf("   Introduce la operacion '+' '-' '*' '/' 'log' '^': ");
 				scanf("%s",peticion);
 
-				printf("   Introduce el primer operando: ");
-				scanf("%lf",&a);
-
-				printf("   Introduce el segundo operando: ");
-				scanf("%lf",&b);
-
-				printf(" PETICION: %f %s %f", a , peticion, b);
-
 				if( strcmp(peticion, "+") == 0 ){
 					printf("\n(es suma)\n");
 					operation='+';
+					peticionValida=1;
 				}
 				else if(strcmp(peticion, "-") == 0){
 					printf("\n(es resta)\n");
 					operation='-';
+					peticionValida=1;
 				}
 				else if(strcmp(peticion, "*") == 0){
 					printf("\n(es mult)\n");
 					operation='*';
+					peticionValida=1;
 				}
 				else if(strcmp(peticion, "/") == 0){
 					printf("\n(es div)\n");
 					operation='/';
+					peticionValida=1;
 				}
 				else if(strcmp(peticion, "log") == 0){
 					printf("\n(es log)\n");
 					operation='l';
+					peticionValida=1;
 				}
 				else if(strcmp(peticion, "^") == 0){
 					printf("\n(es pot)\n");
 					operation='^';
+					peticionValida=1;
+				}
+				else{
+					peticionValida=0;
 				}
 
-				//Realizar peticion al servidor y Mostrar resultado
-				calculadoraprog_basicas (host,a,operation,b);
+				//Si la peticon es valida entonces se obtienen los operandos
+				if(peticionValida){
+
+					if( operation != 'l' && operation != '^'){
+						printf("   Introduce el primer operando: ");
+						scanf("%lf",&a);
+
+						printf("   Introduce el segundo operando: ");
+						scanf("%lf",&b);
+					}
+					else if(operation == 'l')  {
+						printf("   Introduce el argumento: ");
+						scanf("%lf",&a);
+
+						printf("   Introduce la base: ");
+						scanf("%lf",&b);
+					}
+					else if(operation == '^')  {
+						printf("   Introduce la base: ");
+						scanf("%lf",&a);
+
+						printf("   Introduce el exponente: ");
+						scanf("%lf",&b);
+					}
+
+					printf(" PETICION: %f %s %f", a , peticion, b);
+					//Realizar peticion al servidor y Mostrar resultado
+					calculadoraprog_basicas (host,a,operation,b);
+				}
+				else{
+					printf(" NO ES CORRECTA LA PETICION\n");
+				}
+
+				
 
 				break;
 				
