@@ -63,7 +63,7 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
 				clnt_perror (clnt, "call failed");
 			}
             break;
-		case 'log':
+		case 'l':
 			result = logaritmo_1(operands, clnt);
 			if (result == (responseBasic *) NULL) {
 				clnt_perror (clnt, "call failed");
@@ -199,6 +199,7 @@ calculadoraprog_vectores3D(char *host, vector3D v1, vector3D v2, vector3D v3)
 		clnt_perror (clnt, "call failed");
 	}
 	
+	printf("El resultado del producto vectorial es: ");
 	for(int i = 0; i < result->responseVectores_u.vResult.vectorData_len; i++){
 		printf("%f  ", result->responseVectores_u.vResult.vectorData_val[i]);
 	}
@@ -250,7 +251,7 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
     }
 
 	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseMatrices_u.mResult.c);
+	//printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseMatrices_u.mResult.c);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
@@ -291,12 +292,8 @@ main (int argc, char *argv[])
 
 	printf("	1: adios\n");
 
-	printf(" len = %d\n", v1.vectorData_len);
-
 	v1.vectorData_len = 5;
 	v1.vectorData_val = malloc(5*sizeof(double));
-
-	printf(" len = %d\n", v1.vectorData_len);
 
 	for(int i = 0; i < v1.vectorData_len; i++){
 		scanf("%lf",&v1.vectorData_val[i]);
@@ -311,6 +308,9 @@ main (int argc, char *argv[])
 	for(int i = 0; i < v2.vectorData_len; i++){
 		v2.vectorData_val[i] = 5.0;
 	}
+
+	printf("	3: adios\n");
+
 
 	calculadoraprog_vectores(host, v1, operation, v2);
 
