@@ -207,7 +207,7 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
 
 	switch (operation)
     {
-        case '*': //Producto escalar
+        case '·': //Producto escalar
             resultProdEscalar = prodescalar3d_1(operands, clnt);
 			if (resultProdEscalar == (responseBasic *) NULL) {
 				clnt_perror (clnt, "call failed");
@@ -405,7 +405,7 @@ main (int argc, char *argv[])
 				//printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
 
 				//Obtener los operandos y la operacion
-				printf("\tIntroduce la operacion '+' '-' '*' '/' 'log' '^': ");
+				printf("\tIntroduce la operacion  +  -  *  /  log  ^ : ");
 				scanf("%s",peticion);
 
 				if( strcmp(peticion, "+") == 0 ){
@@ -632,7 +632,7 @@ main (int argc, char *argv[])
 					switch(subMenu){
 						case 1: //Producto escalar
 
-						operation = '*';
+						operation = '·';
 						
 						//Resultado
 						printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
