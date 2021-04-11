@@ -283,6 +283,8 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
 	#endif	 /* DEBUG */
 }
 
+#define MAXIMA_LONGITUD_PETICION 50
+
 int
 main (int argc, char *argv[])
 {
@@ -291,7 +293,7 @@ main (int argc, char *argv[])
 	double a, b;
 	char operation;
 
-	char operacion[20];
+	char peticion[MAXIMA_LONGITUD_PETICION];
 
 	if (argc  != 5) {
 		printf ("usage: %s server_host\n", argv[0]);
@@ -356,20 +358,35 @@ main (int argc, char *argv[])
 	int menuPrincipal=0;
 	while( menuPrincipal != 5){
 		printf("Opciones de subsistemas:\n");
-		printf("1: Operaciones Básicas\n");
-		printf("2: Operaciones con vectores\n");
-		printf("3: Operaciones con vectores 3D\n");
-		printf("4: Operaciones con matrices\n");
-		printf("5: Salir \n");
+		printf("  1: Operaciones Básicas\n");
+		printf("  2: Operaciones con vectores\n");
+		printf("  3: Operaciones con vectores 3D\n");
+		printf("  4: Operaciones con matrices\n");
+		printf("  5: Salir \n");
 
 		scanf("%d",&menuPrincipal);
 
 		switch(menuPrincipal){
 			case 1: //Menu Operaciones basicas
-			printf("   ---------OPERACIONES BÁSICAS--------------\n");
-			printf("\t   Introduce una operacion <operabdo> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
-			scanf("%s\n",operacion);
-			printf("cadena = %s\n", operacion);
+			printf("   ----OPERACIÓN BÁSICA----\n");
+			printf("   Introduce una operacion <operando> '+' '-' '*' '/' 'log' '^' <operabdo>: (ej: 5 + 5)\n");
+			
+			//Se obtiene la operacion introducida por teclado
+			fgets(peticion, MAXIMA_LONGITUD_PETICION, stdin);
+
+			printf("PETICION 1 : %s\n",peticion);
+
+
+			//Quitar e salto de línea que se genera con fgets
+			if ((strlen(peticion) > 0) && (peticion[strlen(peticion) - 1] == '\n')){
+				peticion[strlen(peticion) - 1] = '\0';
+			}
+
+			printf("PETICION 2 : %s\n",peticion);
+
+
+			//Obtener los operandos y la operacion
+
 			break;
 				
 			case 2: //Menu vectores
