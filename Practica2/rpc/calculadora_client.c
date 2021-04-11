@@ -406,32 +406,32 @@ main (int argc, char *argv[])
 				scanf("%s",peticion);
 
 				if( strcmp(peticion, "+") == 0 ){
-					printf("\n(es suma)\n");
+					//printf("\n(es suma)\n");
 					operation='+';
 					peticionValida=1;
 				}
 				else if(strcmp(peticion, "-") == 0){
-					printf("\n(es resta)\n");
+					//printf("\n(es resta)\n");
 					operation='-';
 					peticionValida=1;
 				}
 				else if(strcmp(peticion, "*") == 0){
-					printf("\n(es mult)\n");
+					//printf("\n(es mult)\n");
 					operation='*';
 					peticionValida=1;
 				}
 				else if(strcmp(peticion, "/") == 0){
-					printf("\n(es div)\n");
+					//printf("\n(es div)\n");
 					operation='/';
 					peticionValida=1;
 				}
 				else if(strcmp(peticion, "log") == 0){
-					printf("\n(es log)\n");
+					//printf("\n(es log)\n");
 					operation='l';
 					peticionValida=1;
 				}
 				else if(strcmp(peticion, "^") == 0){
-					printf("\n(es pot)\n");
+					//printf("\n(es pot)\n");
 					operation='^';
 					peticionValida=1;
 				}
@@ -464,9 +464,13 @@ main (int argc, char *argv[])
 						scanf("%lf",&b);
 					}
 
-					printf( AZUL_T" El resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
+					printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+					printf( AZUL_T"\nEl resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
+					printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+
+
 				}
 				else{
 					printf(" NO ES CORRECTA LA PETICION\n");
@@ -507,12 +511,12 @@ main (int argc, char *argv[])
 					scanf("%s",peticion);
 
 					if( strcmp(peticion, "+") == 0 ){
-						printf("\n(es suma)\n");
+						//printf("\n(es suma)\n");
 						operation='+';
 						peticionValida=1;
 					}
 					else if(strcmp(peticion, "-") == 0){
-						printf("\n(es resta)\n");
+						//printf("\n(es resta)\n");
 						operation='-';
 						peticionValida=1;
 					}
@@ -524,7 +528,8 @@ main (int argc, char *argv[])
 				}while(peticionValida == 0);
 
 				//Resultado
-				printf( "\n"AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				printf( ""AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
 				for(int i = 0; i < v1.vectorData_len; i++){
 					printf("%lf ",v1.vectorData_val[i]);
 				}
@@ -532,43 +537,37 @@ main (int argc, char *argv[])
 				for(int i = 0; i < v2.vectorData_len; i++){
 					printf("%lf ",v2.vectorData_val[i]);
 				}
-				printf( "\n\t"AZUL_T" = "RESET_COLOR);
-				
+				printf( "\n\t"AZUL_T"= "RESET_COLOR);
+							
 				//Realizar peticion al servidor y Mostrar resultado
 				calculadoraprog_vectores(host, v1, operation, v2);
-	
+
+				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+
 				break;
 
 			break;
 
 			case 3: //Menu Vectores3D
-				printf("   ---------GESTION DE PIEZAS--------------");
-
-				/*
-				printf("   ----OPERACIÓN CON VECTORES----\n");
+				printf("   ----OPERACIÓN CON VECTORES 3D----");
 
 				//Obtener los operandos y la operacion
-				printf("   Introduce el tamaño de los vectores: ");
-				int tam;
-				do{
-					scanf("%d",&tam);
-				}while(tam <= 0);
 
 				printf("   Contenido del primer vector:\n");
-				v1.vectorData_len = tam;
-				v1.vectorData_val = malloc(tam*sizeof(double));
-
-				for(int i = 0; i < v1.vectorData_len; i++){
-					scanf("%lf",&v1.vectorData_val[i]);
-				}
-
-				printf("   Contenido del segundo vector:\n");
-				v2.vectorData_len = tam;
-				v2.vectorData_val = malloc(tam*sizeof(double));
+				printf("      x:");
+				scanf("%lf",&v3D1.x);
+				printf("      y:");
+				scanf("%lf",&v3D1.y);
+				printf("      z:");
+				scanf("%lf",&v3D1.z);
 				
-				for(int i = 0; i < v2.vectorData_len; i++){
-					scanf("%lf",&v2.vectorData_val[i]);
-				}
+				printf("   Contenido del segundo vector:\n");
+				printf("      x:");
+				scanf("%lf",&v3D2.x);
+				printf("      y:");
+				scanf("%lf",&v3D2.y);
+				printf("      z:");
+				scanf("%lf",&v3D2.z);
 
 				//Se pide la operacion
 				peticionValida=0;
@@ -594,20 +593,16 @@ main (int argc, char *argv[])
 				}while(peticionValida == 0);
 
 				//Resultado
-				printf( "\n"AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
-				for(int i = 0; i < v1.vectorData_len; i++){
-					printf("%lf ",v1.vectorData_val[i]);
-				}
-				printf("\n\t%c\n\t",operation);
-				for(int i = 0; i < v2.vectorData_len; i++){
-					printf("%lf ",v2.vectorData_val[i]);
-				}
-				printf( "\n\t"AZUL_T" = "RESET_COLOR);
+				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				printf(AZUL_T" El resultado de la operación "AMARILLO_T);
+
+				printf("(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+				printf( AZUL_T" = "RESET_COLOR);
 				
 				//Realizar peticion al servidor y Mostrar resultado
 				calculadoraprog_vectores(host, v1, operation, v2);
-				*/
-
+				printf(AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				
 				/*int menuPiezas=0;
 				while( menuPiezas != 11){
 					printf("\t\n    Opciones Gestion de piezas:");
