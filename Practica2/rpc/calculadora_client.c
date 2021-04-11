@@ -796,7 +796,7 @@ main (int argc, char *argv[])
 								}
 							}
 
-							printf("\n\t\t%c",operation);
+							printf(AZUL_T"\n\t\t%c"AMARILLO_T,operation);
 
 							for(int i = 0; i < m2.f; i++){
 								printf("\n\t");
