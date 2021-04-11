@@ -475,7 +475,8 @@ main (int argc, char *argv[])
 					}
 
 					printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
-					printf( AZUL_T"  El resultado de la operación "AMARILLO_T"%f %s %f"AZUL_T" = "RESET_COLOR, a , peticion, b);
+					printf( AZUL_T"  El resultado de la operación "AMARILLO_T"%f" AZUL_T" %s "AMARILLO_T"%f"AZUL_T" = "RESET_COLOR, a , peticion, b);
+					
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
 					printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
@@ -536,7 +537,7 @@ main (int argc, char *argv[])
 							for(int i = 0; i < v1.vectorData_len; i++){
 								printf("%lf ",v1.vectorData_val[i]);
 							}
-							printf("\n\t%c\n\t",operation);
+							printf(AZUL_T"\n\t\t%c\n\t"AMARILLO_T,operation);
 							for(int i = 0; i < v2.vectorData_len; i++){
 								printf("%lf ",v2.vectorData_val[i]);
 							}
@@ -558,7 +559,7 @@ main (int argc, char *argv[])
 							for(int i = 0; i < v1.vectorData_len; i++){
 								printf("%lf ",v1.vectorData_val[i]);
 							}
-							printf("\n\t%c\n\t",operation);
+							printf(AZUL_T"\n\t\t%c\n\t"AMARILLO_T,operation);
 							for(int i = 0; i < v2.vectorData_len; i++){
 								printf("%lf ",v2.vectorData_val[i]);
 							}
@@ -618,7 +619,7 @@ main (int argc, char *argv[])
 						printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 						printf(AZUL_T" El resultado de la operación "AMARILLO_T);
 
-						printf("\n\t(%f, %f, %f,) · (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,v3D2.x,v3D2.y,v3D2.z);
+						printf("\n\t(%f, %f, %f,)"AZUL_T" · "AMARILLO_T" (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,v3D2.x,v3D2.y,v3D2.z);
 						printf( AZUL_T" = "RESET_COLOR);
 						
 						//Realizar peticion al servidor y Mostrar resultado
@@ -634,7 +635,7 @@ main (int argc, char *argv[])
 							printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 							printf(AZUL_T" El resultado de la operación "AMARILLO_T);
 
-							printf("\n\t(%f, %f, %f,) %c (%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
+							printf("\n\t(%f, %f, %f,)"AZUL_T" %c "AMARILLO_T"(%f, %f, %f,)",v3D1.x,v3D1.y,v3D1.z,operation,v3D2.x,v3D2.y,v3D2.z);
 							printf( AZUL_T" = "RESET_COLOR);
 							
 							//Realizar peticion al servidor y Mostrar resultado
