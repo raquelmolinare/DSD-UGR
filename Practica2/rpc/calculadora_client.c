@@ -369,8 +369,6 @@ main (int argc, char *argv[])
 	//calculadoraprog_vectores(host, v1, operation, v2);
 
 	//Vectores3D
-	vector3D v3D1, v3D2;
-
 	v3D1.x = 3.0;
 	v3D1.y = 2.0;
 	v3D1.z = 1.0;
@@ -382,7 +380,6 @@ main (int argc, char *argv[])
 	//calculadoraprog_vectores3D(host, v3D1, operation, v3D2);
 	
 	//Matrices
-	matrizData m1, m2;
 	//calculadoraprog_matrices(host, m1, operation, m2);
 
 	int peticionValida=1;
