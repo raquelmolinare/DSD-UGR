@@ -11,6 +11,7 @@
  */
 
 #include "calculadora.h"
+#include <stdio.h>
 
 void
 calculadoraprog_basicas(char *host, double a, char operation, double b)
