@@ -296,16 +296,16 @@ main (int argc, char *argv[])
 
 	char peticion[MAXIMA_LONGITUD_PETICION];
 
-	if (argc  != 5) {
+	if (argc  != 2) {
 		printf ("usage: %s server_host\n", argv[0]);
 		exit (1);
 	}
 
 	//Se almacena la peticion
 	host = argv[1];
-	a = atof(argv[2]);
-	b = atof(argv[4]);
-	operation = *argv[3];
+	//a = atof(argv[2]);
+	//b = atof(argv[4]);
+	//operation = *argv[3];
 
 	//-------------------MENU---------------
 
@@ -358,13 +358,14 @@ main (int argc, char *argv[])
 
 	int menuPrincipal=0;
 	while( menuPrincipal != 5){
-		printf("Opciones de subsistemas:\n");
+		printf("\nOpciones disponibles:\n");
 		printf("  1: Operaciones Básicas\n");
 		printf("  2: Operaciones con vectores\n");
 		printf("  3: Operaciones con vectores 3D\n");
 		printf("  4: Operaciones con matrices\n");
 		printf("  5: Salir \n");
 
+		printf("Introducce una opción:");
 		scanf("%d",&menuPrincipal);
 
 		switch(menuPrincipal){
@@ -377,10 +378,10 @@ main (int argc, char *argv[])
 			scanf("%s",peticion);
 
 			printf("   Introduce el primer operando:");
-			scanf("%f",&a);
+			scanf("%lf",&a);
 
 			printf("   Introduce el segundo operando:");
-			scanf("%f",&b);
+			scanf("%lf",&b);
 
 			printf(" PETICION: %f %s %f", a , peticion, b);
 
