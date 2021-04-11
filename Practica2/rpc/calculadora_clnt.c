@@ -159,15 +159,15 @@ prodvectorial3d_1(operationVectores3D arg1,  CLIENT *clnt)
 	return (&clnt_res);
 }
 
-responseVectores *
+responseMatrices *
 sumamatrices_1(operationMatrices arg1,  CLIENT *clnt)
 {
-	static responseVectores clnt_res;
+	static responseMatrices clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, SUMAMATRICES,
 		(xdrproc_t) xdr_operationMatrices, (caddr_t) &arg1,
-		(xdrproc_t) xdr_responseVectores, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_responseMatrices, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}

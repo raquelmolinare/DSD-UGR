@@ -76,7 +76,7 @@ _prodvectorial3d_1 (operationVectores3D  *argp, struct svc_req *rqstp)
 	return (prodvectorial3d_1_svc(*argp, rqstp));
 }
 
-static responseVectores *
+static responseMatrices *
 _sumamatrices_1 (operationMatrices  *argp, struct svc_req *rqstp)
 {
 	return (sumamatrices_1_svc(*argp, rqstp));
@@ -169,7 +169,7 @@ calculadoraprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case SUMAMATRICES:
 		_xdr_argument = (xdrproc_t) xdr_operationMatrices;
-		_xdr_result = (xdrproc_t) xdr_responseVectores;
+		_xdr_result = (xdrproc_t) xdr_responseMatrices;
 		local = (char *(*)(char *, struct svc_req *)) _sumamatrices_1;
 		break;
 

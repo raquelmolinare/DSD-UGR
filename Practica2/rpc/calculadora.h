@@ -120,8 +120,8 @@ extern  responseBasic * prodescalar3d_1_svc(operationVectores , struct svc_req *
 extern  responseVectores * prodvectorial3d_1(operationVectores3D , CLIENT *);
 extern  responseVectores * prodvectorial3d_1_svc(operationVectores3D , struct svc_req *);
 #define SUMAMATRICES 11
-extern  responseVectores * sumamatrices_1(operationMatrices , CLIENT *);
-extern  responseVectores * sumamatrices_1_svc(operationMatrices , struct svc_req *);
+extern  responseMatrices * sumamatrices_1(operationMatrices , CLIENT *);
+extern  responseMatrices * sumamatrices_1_svc(operationMatrices , struct svc_req *);
 extern int calculadoraprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
@@ -156,8 +156,8 @@ extern  responseBasic * prodescalar3d_1_svc();
 extern  responseVectores * prodvectorial3d_1();
 extern  responseVectores * prodvectorial3d_1_svc();
 #define SUMAMATRICES 11
-extern  responseVectores * sumamatrices_1();
-extern  responseVectores * sumamatrices_1_svc();
+extern  responseMatrices * sumamatrices_1();
+extern  responseMatrices * sumamatrices_1_svc();
 extern int calculadoraprog_1_freeresult ();
 #endif /* K&R C */
 
