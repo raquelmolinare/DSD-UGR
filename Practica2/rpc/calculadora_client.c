@@ -718,12 +718,12 @@ main (int argc, char *argv[])
 				for(int i = 0; i < tam; i++){
 					printf("\tFila %d: ",i);
 					for(int j = 0; j < tam; j++){
-						printf(" m1[%d][%d]: ",i,j);
+						printf("\t\tm1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[(i*m1.c) + j]);
 					}
 				}
 
-				printf("\tContenido de la primera matriz (m1):\n");
+				printf("\tContenido de la segunda matriz (m1):\n");
 				m1.c=tam;
 				m1.f=tam;
 				m1.m.vectorData_len=tam*tam;
@@ -735,6 +735,14 @@ main (int argc, char *argv[])
 						printf(" m1[%d][%d]: ",i,j);
 						scanf("%lf",&m1.m.vectorData_val[ (i*m1.c) + j]);
 					}
+				}
+
+				printf("\tContenido de la primera matriz (m1):\n");
+				for(int i = 0; i < m1.f; i++){
+					for(int j = 0; j < m1.c; j++){
+						printf("%f ",i,j, m1.m.vectorData_val[(i*m1.c)+j]);
+					}
+					printf("\n");
 				}
 
 				/*
