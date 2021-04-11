@@ -89,9 +89,7 @@ responseBasic *
 division_1_svc(operationBasic operands,  struct svc_req *rqstp)
 {
 	static responseBasic  result;
-
-	static responseBasic  result;
-
+	
 	double *calculationp;
 	double calculation;
 
