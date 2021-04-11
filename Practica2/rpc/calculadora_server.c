@@ -265,7 +265,7 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 	a.y= operands.first.y-operands.second.y;
 	a.z= operands.first.z-operands.second.z;
 
-	printf ("1: hola\n");
+	printf ("2: hola\n");
 
 
 	//Vector b = third - second
@@ -274,13 +274,16 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 	a.y= operands.third.y-operands.second.y;
 	a.z= operands.third.z-operands.second.z;
 
-	printf ("1: hola\n");
+	printf ("3: hola\n");
 
 
 	//Producto vectorial a x b = resultado
 	result.responseVectores_u.vResult.vectorData_val[0] = (a.y * b.z) - (a.z * b.y); //x
 	result.responseVectores_u.vResult.vectorData_val[1] = (a.x * b.z) - (a.z * b.x); //y
 	result.responseVectores_u.vResult.vectorData_val[2] = (a.x * b.y) - (a.y * b.x); //z
+
+	printf ("4: hola\n");
+
 	
 	return &result;
 }

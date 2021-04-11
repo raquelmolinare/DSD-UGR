@@ -320,6 +320,14 @@ main (int argc, char *argv[])
 	v3D1.x = 1.0;
 	v3D1.y = 20.0;
 	v3D1.z = 3.0;
+
+	v3D2.x = 1.0;
+	v3D2.y = 20.0;
+	v3D1.z = 3.0;
+
+	v3D2.x = 1.0;
+	v3D2.y = 20.0;
+	v3D2.z = 3.0;
 	
 	calculadoraprog_vectores3D(host, v3D1, v3D2, v3D3);
 	
