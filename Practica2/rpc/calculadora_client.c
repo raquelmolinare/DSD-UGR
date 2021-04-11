@@ -225,12 +225,15 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
             break;
     }
 	
-	//Se muestra el resultado
+	//Se muestra el resultado y se libera la memoria asiganda por la llamada RPC
 	switch (operation)
     {
         case '*': //Producto escalar
             //printf("El resultado del producto escalar es %f",resultProdEscalar->responseBasic_u.result);
 			printf(MAGENTA_T"%f"RESET_COLOR, resultProdEscalar->responseBasic_u.result);
+
+			//Se libera la memoria asignada por la llamada RPC
+			xdr_free (xdr_responseVectores, resultProdEscalar);
             break;
 
         case 'x': //Producto vectorial
@@ -238,16 +241,14 @@ calculadoraprog_vectores3D(char *host, vector3D v1,  char operation, vector3D v2
 			for(int i = 0; i < resultProdVectorial->responseVectores_u.vResult.vectorData_len; i++){
 				printf(MAGENTA_T"%f  "RESET_COLOR, resultProdVectorial->responseVectores_u.vResult.vectorData_val[i]);
 			}
+			//Se libera la memoria asignada por la llamada RPC
+			xdr_free (xdr_responseVectores, resultProdVectorial);
             break;
 		default:
             break;
     }
-		
-	printf("\n");
 
-	//Se libera la memoria asignada por la llamada RPC
-	xdr_free (xdr_responseVectores, resultProdEscalar);
-	xdr_free (xdr_responseVectores, resultProdVectorial);
+	printf("\n");
 
 	#ifndef	DEBUG
 		clnt_destroy (clnt);
