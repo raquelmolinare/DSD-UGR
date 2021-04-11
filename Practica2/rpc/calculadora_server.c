@@ -269,9 +269,36 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 {
 	static responseMatrices  result;
 
-	/*
-	 * insert server code here
-	 */
+	//Se libera la memoria que se asigno en una ejecucion previa del servidor para el resultado
+	xdr_free(xdr_responseMatrices, &result);
+
+	//Se asigna al resultado en valor de las columnas
+	int c = operands.first.c;
+	result.responseMatrices_u.mResult.c = c;
+
+	//Se asigna al resultado en valor de las filas
+	int f = operands.first.f;
+	result.responseMatrices_u.mResult.f = f;
+
+	//Se asigna al resultado en valor del leng que será el numero de filas*columas
+	result.responseMatrices_u.mResult.m.vectorData_len= f*c;
+
+	//Se redimensiona por tando el vector que compone la matriz
+	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
+
+	int indice;
+	double suma;
+
+
+	//Se calcula el resultado de la operacion de producto de matrices
+	for(int i = 0; i < f; i++){
+		for(int j = 0; j < c; j++){
+			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
+			indice = (i*c)+j;
+			suma = operands.first.m.vectorData_val[indice] + operands.second.m.vectorData_val[indice];
+			result.responseMatrices_u.mResult.m.vectorData_val[indice] = suma;
+		}
+	}
 
 	return &result;
 }
