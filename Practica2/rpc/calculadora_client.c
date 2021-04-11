@@ -13,6 +13,24 @@
 #include "calculadora.h"
 #include <stdio.h>
 
+#define RESET_COLOR	"\x1b[0m"
+#define NEGRO_T		"\x1b[30m"
+#define NEGRO_F		"\x1b[40m"
+#define ROJO_T		"\x1b[31m"
+#define ROJO_F		"\x1b[41m"
+#define VERDE_T		"\x1b[32m"
+#define VERDE_F 	"\x1b[42m"
+#define AMARILLO_T	"\x1b[33m"
+#define AMARILLO_F	"\x1b[43m"
+#define AZUL_T		"\x1b[34m"
+#define AZUL_F		"\x1b[44m"
+#define MAGENTA_T	"\x1b[35m"
+#define MAGENTA_F	"\x1b[45m"
+#define CYAN_T		"\x1b[36m"
+#define CYAN_F		"\x1b[46m"
+#define BLANCO_T	"\x1b[37m"
+#define BLANCO_F	"\x1b[47m"
+
 void
 calculadoraprog_basicas(char *host, double a, char operation, double b)
 {
@@ -82,7 +100,8 @@ calculadoraprog_basicas(char *host, double a, char operation, double b)
     }
 
 	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
+	//printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
+	printf(ROJO_T"%f"RESET_COLOR"\n", result->responseBasic_u.result);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
@@ -438,15 +457,13 @@ main (int argc, char *argv[])
 						scanf("%lf",&b);
 					}
 
-					printf(" PETICION: %f %s %f", a , peticion, b);
+					printf( ROJO_T" El resultado de la operación %f %s %f = "RESET_COLOR, a , peticion, b);
 					//Realizar peticion al servidor y Mostrar resultado
 					calculadoraprog_basicas (host,a,operation,b);
 				}
 				else{
 					printf(" NO ES CORRECTA LA PETICION\n");
-				}
-
-				
+				}	
 
 				break;
 				
