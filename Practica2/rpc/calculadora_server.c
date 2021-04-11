@@ -283,7 +283,7 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	//Puntero a la dimension del vector
 	int *dim;
 	dim = &result.responseMatrices_u.mResult.m.vectorData_len;
-	*dim = f*c;
+	(*dim) = f*c;
 
 	//Se redimensiona por tando el vector que compone la matriz
 	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
@@ -303,10 +303,9 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 		for(int j = 0; j < c; j++){
 			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
 			// indice = (i*c)+j
-			*resultado[(i*c)+j] = *m1[(i*c)+j] + *m2[(i*c)+j];
+			(*resultado[(i*c)+j]) = *m1[(i*c)+j] + *m2[(i*c)+j];
 			printf("%f = %f + %f\n" , *resultado[(i*c)+j], *m1[(i*c)+j],*m2[(i*c)+j]);
 			printf("hola\n") ;
-
 		}
 	}
 
