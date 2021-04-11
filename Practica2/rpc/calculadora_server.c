@@ -122,7 +122,7 @@ logaritmo_1_svc(operationBasic operands,  struct svc_req *rqstp)
 	calculationp = &result.responseBasic_u.result;
 
 	//Se calcula el resultado de la operacion
-	calculation = log(operands.first)/ log(operands.second);
+	calculation = log(operands.first) / log(operands.second);
 
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
@@ -147,7 +147,7 @@ potencia_1_svc(operationBasic operands,  struct svc_req *rqstp)
 	calculationp = &result.responseBasic_u.result;
 
 	//Se calcula el resultado de la operacion
-	calculation = pows(operands.first, operands.second);
+	calculation = pow(operands.first, operands.second);
 
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
