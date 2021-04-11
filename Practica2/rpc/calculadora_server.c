@@ -256,17 +256,26 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 	//Se redimensiona
 	result.responseVectores_u.vResult.vectorData_val = malloc(3*sizeof(double));
 
+	printf ("1: hola\n");
+
+
 	//Vector a = first - second
 	vector3D a;
 	a.x= operands.first.x-operands.second.x;
 	a.y= operands.first.y-operands.second.y;
 	a.z= operands.first.z-operands.second.z;
 
+	printf ("1: hola\n");
+
+
 	//Vector b = third - second
 	vector3D b;
 	a.x= operands.third.x-operands.second.x;
 	a.y= operands.third.y-operands.second.y;
 	a.z= operands.third.z-operands.second.z;
+
+	printf ("1: hola\n");
+
 
 	//Producto vectorial a x b = resultado
 	result.responseVectores_u.vResult.vectorData_val[0] = (a.y * b.z) - (a.z * b.y); //x
