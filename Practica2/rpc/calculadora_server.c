@@ -282,7 +282,7 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 	result.responseVectores_u.vResult.vectorData_val[1] = (a.x * b.z) - (a.z * b.x); //y
 	result.responseVectores_u.vResult.vectorData_val[2] = (a.x * b.y) - (a.y * b.x); //z
 
-	printf ("4: hola\n");
+	printf ("4: resultado x:%f y:%f z:%f\n", result.responseVectores_u.vResult.vectorData_val[0],result.responseVectores_u.vResult.vectorData_val[1],result.responseVectores_u.vResult.vectorData_val[2] );
 
 	
 	return &result;
