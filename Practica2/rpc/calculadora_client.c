@@ -156,7 +156,7 @@ calculadoraprog_vectores(char *host, vectorData v1, char operation, vectorData v
 			}
             break;
 		case '*'://Producto escalar
-           	printf("El resultado del producto escalar es %f",resultProdEscalar);
+           	printf("El resultado del producto escalar es %f",resultProdEscalar->responseBasic_u.result);
             break;
 
 		default:
@@ -318,17 +318,17 @@ main (int argc, char *argv[])
 	//Vectores3D
 	vector3D v3D1, v3D2, v3D3;
 
-	v3D1.x = 1.0;
-	v3D1.y = 20.0;
-	v3D1.z = 3.0;
+	v3D1.x = 3.0;
+	v3D1.y = 2.0;
+	v3D1.z = 1.0;
 
 	v3D2.x = 1.0;
 	v3D2.y = 20.0;
 	v3D1.z = 3.0;
 
-	v3D2.x = 1.0;
-	v3D2.y = 20.0;
-	v3D2.z = 3.0;
+	v3D3.x = 1.0;
+	v3D3.y= 15.0;
+	v3D3.z = 3.0;
 	
 	calculadoraprog_vectores3D(host, v3D1, v3D2, v3D3);
 	
