@@ -821,6 +821,7 @@ main (int argc, char *argv[])
 						default:
 							printf("\t    ERROR: Opcion no valida\n");
 					}
+				}
 
 				break;
 
