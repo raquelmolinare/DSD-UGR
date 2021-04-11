@@ -304,7 +304,7 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
 			// indice = (i*c)+j
 			*resultado[(i*c)+j] = *m1[(i*c)+j] + *m2[(i*c)+j];
-			printf("%f = %f + %f\n" , *resultado[(i*c)+j], *m1[(i*c)+j]),*m2[(i*c)+j]);
+			printf("%f = %f + %f\n" , *resultado[(i*c)+j], *m1[(i*c)+j],*m2[(i*c)+j]);
 			printf("hola\n") ;
 
 		}
