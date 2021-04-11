@@ -222,7 +222,7 @@ prodescalar3d_1_svc(operationVectores operands,  struct svc_req *rqstp)
 	calculationp = &result.responseBasic_u.result;
 
 	//Se calcula el resultado de la operacion
-	productoEscalar = (operands.first.vectorData_val x*operands.second.x) + (operands.first.y*operands.second.y) + (operands.first.z*operands.second.z);
+	productoEscalar = (operands.first.vectorData_val[0]*operands.second.vectorData_val[0]) + (operands.first.vectorData_val[1]*operands.second.vectorData_val[1]) + (operands.first.vectorData_val[2]*operands.second.vectorData_val[2]);
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
 	//Por lo que se cambia el result.response_u.result

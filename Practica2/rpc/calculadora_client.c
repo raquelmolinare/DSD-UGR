@@ -244,11 +244,11 @@ calculadoraprog_matrices(char *host, matrizData a, matrizData b, char operation)
     }
 
 	//Se muestra el resultado
-	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseBasic_u.result);
+	printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseMatrices_u.mResult.c);
 	
 
 	//Se libera la memoria asignada por la llamada RPC
-	xdr_free (xdr_responseMatrices result);
+	xdr_free (xdr_responseMatrices, result);
 	
 	
 	#ifndef	DEBUG
