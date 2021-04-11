@@ -385,27 +385,27 @@ main (int argc, char *argv[])
 
 				printf(" PETICION: %f %s %f", a , peticion, b);
 
-				if( strcmp(peticion, "+") ){
+				if( strcmp(peticion, "+") == 0 ){
 					printf("\n(es suma)\n");
 					operation='+';
 				}
-				else if(strcmp(peticion, "-")){
+				else if(strcmp(peticion, "-") == 0){
 					printf("\n(es resta)\n");
 					operation='-';
 				}
-				else if(strcmp(peticion, "*")){
+				else if(strcmp(peticion, "*") == 0){
 					printf("\n(es mult)\n");
 					operation='*';
 				}
-				else if(strcmp(peticion, "/")){
+				else if(strcmp(peticion, "/") == 0){
 					printf("\n(es div)\n");
 					operation='/';
 				}
-				else if(strcmp(peticion, "log")){
+				else if(strcmp(peticion, "log") == 0){
 					printf("\n(es log)\n");
 					operation='l';
 				}
-				else if(strcmp(peticion, "^")){
+				else if(strcmp(peticion, "^") == 0){
 					printf("\n(es pot)\n");
 					operation='^';
 				}
