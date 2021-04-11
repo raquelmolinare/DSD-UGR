@@ -225,8 +225,6 @@ prodescalar3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 
 	//Se calcula el resultado de la operacion
 	productoEscalar = (operands.first.x*operands.second.x) + (operands.first.y*operands.second.y) + (operands.first.z*operands.second.z);
-	printf ("producto escalar: %f\n", productoEscalar);
-
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
 	//Por lo que se cambia el result.response_u.result
@@ -252,14 +250,10 @@ prodvectorial3d_1_svc(operationVectores3D operands,  struct svc_req *rqstp)
 	//Se redimensiona
 	result.responseVectores_u.vResult.vectorData_val = malloc(3*sizeof(double));
 
-	printf ("1: hola\n");
-
 	//Producto vectorial v1 x v2 = resultado
 	result.responseVectores_u.vResult.vectorData_val[0] = (operands.first.y * operands.second.z) - (operands.first.z * operands.second.y); //x
 	result.responseVectores_u.vResult.vectorData_val[1] = (operands.first.x * operands.second.z) - (operands.first.z * operands.second.x); //y
 	result.responseVectores_u.vResult.vectorData_val[2] = (operands.first.x * operands.second.y) - (operands.first.y * operands.second.x); //z
-
-	printf ("4: resultado x:%f y:%f z:%f\n", result.responseVectores_u.vResult.vectorData_val[0],result.responseVectores_u.vResult.vectorData_val[1],result.responseVectores_u.vResult.vectorData_val[2] );
 
 	return &result;
 }
