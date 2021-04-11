@@ -285,15 +285,6 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 	//Se redimensiona por tando el vector que compone la matriz
 	result.responseMatrices_u.mResult.m.vectorData_val = malloc( f*c*sizeof(double));
 
-	//Se toman punteros a los valores de las matrices que forman los operandos por facilidad
-	double **m1;
-	double **m2;
-	m1 = &operands.first.m.vectorData_val;
-	m2 = &operands.second.m.vectorData_val;
-
-	double **resultado;
-	resultado = &result.responseMatrices_u.mResult.m.vectorData_val;
-
 	int indice;
 	double suma;
 
@@ -304,8 +295,6 @@ sumamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 			indice = (i*c)+j;
 			suma = operands.first.m.vectorData_val[indice] + operands.second.m.vectorData_val[indice];
 			result.responseMatrices_u.mResult.m.vectorData_val[indice] = suma;
-			printf("%f" , suma);
-			printf("hola\n") ;
 		}
 	}
 

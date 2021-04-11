@@ -293,8 +293,35 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
     }
 
 	//Se muestra el resultado
-	//printf("El resultado de la operación %f %c %f = %f\n", a, operation, b, result->responseMatrices_u.mResult.c);
-	
+	int indice, fil, col;
+	fil = result->responseMatrices_u.mResult.f;
+	col = result->responseMatrices_u.mResult.c;
+	switch (operation)
+    {
+        case '+': //Suma
+			for(int i = 0; i < fil; i++){
+				for(int j = 0; j < col; j++){
+					indice = (i*col)+j;
+					printf("\n\t");
+					printf(MAGENTA_T"%f  "RESET_COLOR, result->responseMatrices_u.mResult.m.vectorData_val[indice]);
+				}
+			}
+			printf("\n");
+            break;
+
+        case '-'://Resta
+			for(int i = 0; i < fil; i++){
+				for(int j = 0; j < col; j++){
+					indice = (i*col)+j;
+					printf("\n\t");
+					printf(MAGENTA_T"%f  "RESET_COLOR, result->responseMatrices_u.mResult.m.vectorData_val[indice]);
+				}
+			}
+			printf("\n");
+            break;
+		default:
+            break;
+    }
 
 	//Se libera la memoria asignada por la llamada RPC
 	xdr_free (xdr_responseMatrices, result);
@@ -756,7 +783,33 @@ main (int argc, char *argv[])
 				printf("\n");
 
 				operation = '+';
-				calculadoraprog_matrices(host, m1, operation, m2);
+				
+
+				//Resultado
+				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
+				printf( ""AZUL_T" El resultado de la operación:\n\t"AMARILLO_T);
+
+							for(int i = 0; i < m1.f; i++){
+								printf("\n\t");
+								for(int j = 0; j < m1.c; j++){
+									printf("%f ", m1.m.vectorData_val[(i*m1.c)+j]);
+								}
+							}
+
+							printf("\n\t%c\n\t",operation);
+
+							for(int i = 0; i < m2.f; i++){
+								printf("\n\t");
+								for(int j = 0; j < m2.c; j++){
+									printf("%f ", m2.m.vectorData_val[(i*m2.c)+j]);
+								}
+							}
+							
+							printf( "\n\t"AZUL_T"= "RESET_COLOR);
+										
+							//Realizar peticion al servidor y Mostrar resultado
+							calculadoraprog_matrices(host, m1, operation, m2);
+				printf("\n"AZUL_T"--------------------------------------------------------------------"RESET_COLOR"\n");
 
 				/*
 				subMenu = 0;
