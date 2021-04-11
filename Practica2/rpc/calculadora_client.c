@@ -302,9 +302,9 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
     {
         case '+': //Suma
 			for(int i = 0; i < fil; i++){
+				printf("\n\t");
 				for(int j = 0; j < col; j++){
 					indice = (i*col)+j;
-					printf("\n\t");
 					printf(MAGENTA_T"%f  "RESET_COLOR, result->responseMatrices_u.mResult.m.vectorData_val[indice]);
 				}
 			}
@@ -313,9 +313,9 @@ calculadoraprog_matrices(char *host, matrizData a, char operation, matrizData b)
 
         case '-'://Resta
 			for(int i = 0; i < fil; i++){
+				printf("\n\t");
 				for(int j = 0; j < col; j++){
 					indice = (i*col)+j;
-					printf("\n\t");
 					printf(MAGENTA_T"%f  "RESET_COLOR, result->responseMatrices_u.mResult.m.vectorData_val[indice]);
 				}
 			}
