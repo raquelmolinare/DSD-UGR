@@ -333,6 +333,7 @@ main (int argc, char *argv[])
 
 	//Operaciones con Matrices
 	matrizData m1, m2;
+	int tam;
 	
 	//a = atof(argv[2]);
 	//b = atof(argv[4]);
@@ -703,7 +704,7 @@ main (int argc, char *argv[])
 				//Obtener los operandos y la operacion
 
 				printf("\tIntroduce el numero de filas y columnas: ");
-				int tam;
+				
 				do{
 					scanf("%d",&tam);
 				}while(tam <= 0);

@@ -4,6 +4,13 @@
  * as a guideline for developing your own functions.
  */
 
+
+/**
+ *	Autor: Raquel Molina Reche
+ * 
+ *	Compilación:  gcc calculadora_server.c calculadora_svc.c calculadora_xdr.c -o servidor -lnsl -lm
+ */
+
 #include "calculadora.h"
 #include <stdio.h>
 #include <math.h>
