@@ -335,7 +335,7 @@ restamatrices_1_svc(operationMatrices operands,  struct svc_req *rqstp)
 			//El valor del indice vendrá dado por la fila actual (i)* numero de columnas(c) + j
 			indice = (i*c)+j;
 			resta = operands.first.m.vectorData_val[indice] - operands.second.m.vectorData_val[indice];
-			result.responseMatrices_u.mResult.m.vectorData_val[indice] = suma;
+			result.responseMatrices_u.mResult.m.vectorData_val[indice] = resta;
 		}
 	}
 
