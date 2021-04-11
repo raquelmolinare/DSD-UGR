@@ -80,7 +80,7 @@ multiplicacion_1_svc(operationBasic operands,  struct svc_req *rqstp)
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
 	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation
+	(*calculationp) = calculation;
 
 	return &result;
 }
@@ -107,7 +107,7 @@ division_1_svc(operationBasic operands,  struct svc_req *rqstp)
 
 	//Se cambia el contenido hacia donde apunta calculationp por el resultado de la operacion
 	//Por lo que se cambia el result.response_u.result
-	(*calculationp) = calculation
+	(*calculationp) = calculation;
 
 	return &result;
 }

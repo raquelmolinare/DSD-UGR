@@ -129,12 +129,6 @@ calculadoraprog_vectores(char *host, vectorData v1, char operation, vectorData v
 				clnt_perror (clnt, "call failed");
 			}
             break;
-		case '*'://Producto escalar
-           	resultProdEscalar = prodescalar3d_1(operands, clnt);
-			if (resultProdEscalar == (responseVectores *) NULL) {
-				clnt_perror (clnt, "call failed");
-			}
-            break;
 		default:
             break;
     }
@@ -155,10 +149,6 @@ calculadoraprog_vectores(char *host, vectorData v1, char operation, vectorData v
 				printf("%f  ", result->responseVectores_u.vResult.vectorData_val[i]);
 			}
             break;
-		case '*'://Producto escalar
-           	printf("El resultado del producto escalar es %f",resultProdEscalar->responseBasic_u.result);
-            break;
-
 		default:
             break;
     }
