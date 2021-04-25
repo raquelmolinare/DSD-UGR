@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="gen-java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libthrift-0.13.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/slf4j-simple-1.6.99.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
