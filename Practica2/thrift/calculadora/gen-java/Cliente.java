@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Cliente {
 
   static final String AZUL = "\u001B[34m";
-  static final String AMARILLO = "\u001B[33m";
-  static final String MAGENTA = "\u001B[35m";
+  static final String GREEN = "\033[1;32m";
+  static final String MAGENTA = "\033[1;35m";
   static final String RESET_COLOR = "\u001B[0m";
 
   public static void main(String [] args) {
@@ -150,7 +150,7 @@ public class Cliente {
                 resultadoBasicas = client.multiplicacion(a, b);
                 break;
 
-              case 4://#Division
+              case 4://Division
                 peticion = "/";
                 peticionValida = true;
 
@@ -201,17 +201,17 @@ public class Cliente {
             if (peticionValida){
               if(peticion == "+" || peticion== "-"){
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
-                System.out.println(AZUL+"  El resultado de la operación "+AMARILLO+op1+" "+AZUL+peticion+AMARILLO+" "+op2+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
+                System.out.println(AZUL+"  El resultado de la operación "+GREEN+op1+" "+AZUL+peticion+GREEN+" "+op2+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
                 System.out.println(AZUL+"--------------------------------------------------------------------------"+RESET_COLOR);
               }
               else if(peticion == "^"){
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
-                System.out.println(AZUL+"  El resultado de la operación "+AMARILLO+a+" "+AZUL+peticion+AMARILLO+" "+op1+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
+                System.out.println(AZUL+"  El resultado de la operación "+GREEN+a+" "+AZUL+peticion+GREEN+" "+op1+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
               }
               else {
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
-                System.out.println(AZUL+"  El resultado de la operación "+AMARILLO+a+" "+AZUL+peticion+AMARILLO+" "+b+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
+                System.out.println(AZUL+"  El resultado de la operación "+GREEN+a+" "+AZUL+peticion+GREEN+" "+b+AZUL+" = "+MAGENTA+resultadoBasicas+RESET_COLOR);
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
               }
             }
@@ -292,20 +292,20 @@ public class Cliente {
             if (peticionValida) {
               System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
               //System.out.println("{AZUL}  El resultado de la operación {AMARILLO} {a} {AZUL} {peticion} {AMARILLO} {b} {AZUL} = {MAGENTA} {resultado} {RESET_COLOR}");
-              System.out.println(AZUL+"  El resultado de la operación : "+AMARILLO);
+              System.out.println(AZUL+"  El resultado de la operación : "+GREEN);
 
               //Se imprime el primer vector
-              System.out.print(v1);
+              System.out.print("\t"+v1);
 
               //Se impime la operacion
-              System.out.println(AZUL+"\n\t\t" + peticion + "\t"+AMARILLO);
+              System.out.println(AZUL+"\n\t\t" + peticion + "\t"+GREEN);
 
               //Se imprime el segundo vector
-              System.out.print(v2);
+              System.out.print("\t"+v2);
 
               //Se imprime el vector resultado
               System.out.println("\n\t\t"+AZUL+" = "+MAGENTA);
-              System.out.print(resultadoVectores);
+              System.out.print("\t"+resultadoVectores);
 
               System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
 
@@ -364,7 +364,7 @@ public class Cliente {
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
                 System.out.println(AZUL+"  El resultado de la operación:");
                 //Se imprime la operacion y el resultado que en este caso es un numero
-                System.out.println("\n\t"+AMARILLO+"("+v3D1.x+","+v3D1.y+", "+v3D1.z+")"+AZUL+" * "+AMARILLO+"("+v3D2.x+","+v3D2.y+", "+v3D2.z+")"+AZUL+" = "+MAGENTA+" "+resultadoEscalar);
+                System.out.println("\n\t"+GREEN+"("+v3D1.x+","+v3D1.y+","+v3D1.z+")"+AZUL+" * "+GREEN+"("+v3D2.x+","+v3D2.y+","+v3D2.z+")"+AZUL+" = "+MAGENTA+" "+resultadoEscalar);
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
                 break;
 
@@ -376,9 +376,9 @@ public class Cliente {
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
                 System.out.println("{AZUL}  El resultado de la operación:");
                 //Se imprime la operacion
-                System.out.println("\n\t"+AMARILLO+"("+v3D1.x+", "+v3D1.y+", "+v3D1.z+")"+AZUL+" · "+AMARILLO+"("+v3D2.x+", "+v3D2.y+", "+v3D2.z+")");
+                System.out.print("\n\t"+GREEN+"("+v3D1.x+", "+v3D1.y+","+v3D1.z+")"+AZUL+" · "+GREEN+"("+v3D2.x+", "+v3D2.y+","+v3D2.z+")");
                 //Se imprime el vector resultado que en este caso en otro vector 3D
-                System.out.println(AZUL+" = "+MAGENTA+"("+resultado3D.x+", "+resultado3D.y+", "+resultado3D.z+")");
+                System.out.print(AZUL+" = "+MAGENTA+"("+resultado3D.x+", "+resultado3D.y+","+resultado3D.z+")");
                 System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
                 break;
 
@@ -484,7 +484,7 @@ public class Cliente {
             //SE IMPRIME EL RESULTADO DE LA OPERACION
             if (peticionValida) {
               System.out.println("\n"+AZUL+"-------------------------------------------------------------------------"+RESET_COLOR);
-              System.out.println(AZUL+"  El resultado de la operación: "+AMARILLO);
+              System.out.println(AZUL+"  El resultado de la operación: "+GREEN);
 
               //Se imprime la primera matriz
               for(int i=0; i < tam; i++){
@@ -495,7 +495,7 @@ public class Cliente {
                 System.out.println("");
               }
               //Se impime la operacion
-              System.out.println(AZUL+"\t\t{peticion}\t"+AMARILLO);
+              System.out.println(AZUL+"\t\t"+peticion+"\t"+GREEN);
 
               //Se imprime la segunda matriz
               for(int i=0; i < tam; i++){

@@ -317,7 +317,7 @@ while menuPrincipal != 5:
         print ("\tContenido de la primera matriz (m1):")
         for i in range(0,tam):
             for j in range(0,tam):
-                m1.m.append(float(input(f"\tm[{i}][{j}]: ")))
+                m1.m.append(float(input(f"\tm1[{i}][{j}]: ")))
 
         #3. Obtener el contenido de la segunda matriz
         m2.c = tam
@@ -325,7 +325,7 @@ while menuPrincipal != 5:
         print ("\tContenido del segunda matriz (m2):")
         for i in range(0,tam):
             for j in range(0,tam):
-                m2.m.append(float(input(f"\tm[{i}][{j}]: ")))
+                m2.m.append(float(input(f"\tm2[{i}][{j}]: ")))
 
         #4. Operaciones disponibles con esas matrices
         subMenu = 0
@@ -353,7 +353,7 @@ while menuPrincipal != 5:
                 #Realizamos llamada a la peticion de calculo para el servidor
                 resultado = client.restamatrices( m1, m2)
 
-            elif subMenu == 3: #Resta de matrices
+            elif subMenu == 3: #Producto de matrices
                 peticion="*"
                 peticionValida = True
 
@@ -375,7 +375,8 @@ while menuPrincipal != 5:
                 for i in range(0,m1.f):
                     print ("\t", end="")
                     for j in range(0,m1.c):
-                        print (m1.m[ (m1.c*i) + j], end="  ")
+                        indice = (i*m1.c)+j
+                        print (m1.m[indice], end="  ")
                     print ("\n", end="")
 
                 #Se impime la operacion
@@ -385,7 +386,8 @@ while menuPrincipal != 5:
                 for i in range(0,m2.f):
                     print ("\t", end="")
                     for j in range(0,m2.c):
-                        print (m2.m[ (m1.c*i) + j], end="  ")
+                        indice = (i*m2.c)+j
+                        print (m2.m[indice], end="  ")
                     print ("\n", end="")
 
                 #Se imprime la matriz resultado
@@ -393,7 +395,8 @@ while menuPrincipal != 5:
                 for i in range(0,resultado.f):
                     print ("\t", end="")
                     for j in range(0,resultado.c):
-                        print (resultado.m[ (resultado.c*i) + j], end="  ")
+                        indice = (i*resultado.c)+j
+                        print (resultado.m[indice], end="  ")
                     print ("\n", end="")
 
 
