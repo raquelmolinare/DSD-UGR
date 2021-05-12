@@ -8,6 +8,7 @@
 
 package donacion;
 
+import servidor.replicas;
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.net.MalformedURLException;
@@ -34,17 +35,27 @@ public class donacion extends UnicastRemoteObject implements idonacion{
         clientes = new HashMap<>();
         cantidad = 0;
         numDonaciones = 0;
-        
+        iservidor = new replicas();
     }
     
     @Override
     public String registrar(String cliente) throws RemoteException{
-        //Se comunica con el resto de replicas para saber cual tiene menos clientes registrados
-        String replicaDefinitiva = iservidor.registrar(cliente);
         
-        //En esa comunicacion ya se registra al cliente en la hebra que corresponde
-        //Se devuelve el nombre de la replica definitiva al cliente
-        return replicaDefinitiva;
+        //Se comunica con el resto de hebras para conocer si ya existe el cliente en alguna
+        if( !iservidor.yaRegistrado(cliente) ){
+            //Si todavia no esta registrado en ninguna
+            
+            //Se comunica con el resto de replicas para saber cual tiene menos clientes registrados
+            String replicaDefinitiva = iservidor.registrar(cliente);
+            
+            //En esa comunicacion ya se registra al cliente en la hebra que corresponde
+            //Se devuelve el nombre de la replica definitiva al cliente
+            return replicaDefinitiva;
+        }
+        else{
+            return "ERROR";
+        }
+         
     }
     
     public boolean donar(String cliente, int cantidad) throws RemoteException{
@@ -56,6 +67,8 @@ public class donacion extends UnicastRemoteObject implements idonacion{
             
             double donado = this.clientes.get(cliente)+cantidad;
             this.clientes.put(cliente, donado);
+            
+            System.out.println(iservidor.toString());
             
             return true;
         }
@@ -81,8 +94,16 @@ public class donacion extends UnicastRemoteObject implements idonacion{
         return this.clientes.size();
     }
     
+    public HashMap<String, Double>  getClientes() {
+        return this.clientes;
+    }
+    
     public void addCliente(String nombre){
         clientes.put(nombre, 0.0);
+    }
+    
+     public void setReplicas(replicas r){
+        iservidor = r;
     }
 
     /*
@@ -113,5 +134,6 @@ public class donacion extends UnicastRemoteObject implements idonacion{
         //Devuelve el nombre de la replica
         
     }*/
+
     
 }

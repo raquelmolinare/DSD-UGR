@@ -13,12 +13,8 @@ import java.rmi.RemoteException;
 
 
 public interface idonacion extends Remote{
-    public boolean registrar(String cliente) throws RemoteException;
+    public String registrar(String cliente) throws RemoteException;
     public boolean donar(String cliente, int cantidad) throws RemoteException;
     public double getCantidadCliente(String cliente) throws RemoteException;
     public double getCantidadTotal() throws RemoteException;    
-    public int getNumClientes() throws RemoteException;
-
-
-    
 }

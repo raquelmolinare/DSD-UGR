@@ -13,6 +13,8 @@ public class cliente {
     //Variables información cliente
     private String cliente;
     private int numReplica=-1;
+    private static idonacion  midonacionPrimera;
+    private static idonacion midonacionDefinitiva;
     
     public static void main( String[] args) {
         
@@ -32,39 +34,21 @@ public class cliente {
             System.out.println("Buscando al servidor...");
             Registry mireg = LocateRegistry.getRegistry(host, 1099);
             
-            idonacion midonacion = (idonacion)mireg.lookup("r1");
-
-            System.out.println("Primer cliente");
-            midonacion.registrar("Raquel");
-            midonacion.donar("Ana",50);
-            midonacion.donar("Raquel",100);
-            System.out.println("El total donado en esta replica ha sido "+midonacion.getCantidadTotal());            
+            midonacionPrimera = (idonacion)mireg.lookup("replica2");
             
-            System.out.println("El total donado por Raquel ha sido "+midonacion.getCantidadCliente("Raquel"));            
-            System.out.println("El total donado por Ana ha sido "+midonacion.getCantidadCliente("Ana"));
-
-
-
+            //-------------------MENU---------------
             
-            /*
-            // Pone el contador al valor inicial 0
-            System.out.println("Poniendo contador a 0");
-            micontador.sumar(0);
+            String nombreReplica = midonacionPrimera.registrar("Raquel");
+            
+            idonacion midonacionDefinitiva = (idonacion)mireg.lookup(nombreReplica);
+            midonacionDefinitiva.donar("Ana",50);
+            midonacionDefinitiva.donar("Raquel",100);
+            System.out.println("El total donado en esta replica ha sido "+midonacionDefinitiva.getCantidadTotal());            
+            
+            System.out.println("El total donado por Raquel ha sido "+midonacionDefinitiva.getCantidadCliente("Raquel"));            
+            System.out.println("El total donado por Ana ha sido "+midonacionDefinitiva.getCantidadCliente("Ana"));
 
-            // Obtiene hora de comienzo
-            long horacomienzo = System.currentTimeMillis();
 
-            // Incrementa 1000 veces
-            System.out.println("Incrementando...");
-            for(int i = 0; i < 1000; i++ ) {
-                micontador.incrementar();
-            }
-
-            // Obtiene hora final, realiza e imprime calculos
-            long horafin = System.currentTimeMillis();
-            System.out.println("Media de las RMI realizadas = "+ ((horafin -horacomienzo)/1000f)+ " msegs");
-            System.out.println("RMI realizadas = "+ micontador.sumar());
-            */
 
         }
         catch(NotBoundException | RemoteException e){

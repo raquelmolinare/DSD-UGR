@@ -11,4 +11,8 @@ package iservidor;
 
 public interface iservidor{
     public String registrar(String cliente);
+    public boolean yaRegistrado(String cliente);
+    public boolean igualNumClientes();
+
+
 }
