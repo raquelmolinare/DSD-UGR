@@ -1,5 +1,0 @@
-//client.policy
-
-grant{
-    permission java.security.AllPermission;
-};
