@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongodb": "^3.6.9",
+    "node-tweet-stream": "^2.0.3",
+    "socket.io": "^4.1.2",
+    "twitter-lite": "^1.1.0"
+  }
+}
